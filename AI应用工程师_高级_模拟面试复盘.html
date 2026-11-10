@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html data-page-node-id="Z7dS32Kwd843GuQszPrWFu" lang="zh-CN">
+<head data-page-node-id="0btdKFUnA3X4nuedc1SokI">
+<script data-page-node-id="0y8InPEhamSGUYorfSDV6n" src="/page/page_comm/inject.js"></script>
+<meta data-page-node-id="uiLIYMa7eLOdZEnrJciZ2d" charset="UTF-8">
+<meta data-page-node-id="84RArVdmHNaV3WWA1ikAgZ" content="width=device-width, initial-scale=1.0" name="viewport">
+<title data-page-node-id="JcVahX17LhpIuqYGSicKvx" data-pnid-children="JK5RnwWtLOF2ScdF7P4Dp7">AI 应用工程师（高级）模拟面试 · 复盘手册</title>
+<style data-page-node-id="92VTR0ZqCtPE991GYSvPc2" data-pnid-children="dPske4I5T1zVLHf2Hvtwqo">
+  :root{
+    --ink:#1a1a1a;
+    --ink-2:#3f4652;
+    --muted:#6b7280;
+    --line:#e5e7eb;
+    --bg:#f7f8fa;
+    --card:#ffffff;
+    --brand:#1f6feb;
+    --green:#0f7b4f;
+    --green-bg:#eaf7f0;
+    --amber:#9a6200;
+    --amber-bg:#fdf4e3;
+    --blue-bg:#eef4ff;
+    --gray-bg:#f3f4f6;
+    --red:#b42318;
+    --red-bg:#fdecea;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75;
+    font-size:15.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:48px 28px 80px;}
+
+  /* header */
+  header.hero{
+    background:linear-gradient(135deg,#1b2a4a 0%,#2a3f66 60%,#33507f 100%);
+    color:#fff;
+    border-radius:16px;
+    padding:38px 40px 32px;
+    margin-bottom:34px;
+  }
+  header.hero .kicker{
+    font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:#9fb4d8;margin-bottom:10px;
+  }
+  header.hero h1{
+    font-size:27px;line-height:1.35;margin:0 0 6px;font-weight:700;letter-spacing:.01em;
+  }
+  header.hero .sub{color:#c9d6ec;font-size:14.5px;margin:0;}
+  .meta-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px;
+  }
+  .meta-grid div{
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:10px;padding:11px 13px;
+  }
+  .meta-grid .k{font-size:11.5px;color:#9fb4d8;letter-spacing:.05em;}
+  .meta-grid .v{font-size:15px;font-weight:600;margin-top:2px;color:#fff;}
+
+  /* section titles */
+  h2.sec{
+    font-size:19px;margin:46px 0 18px;padding-left:12px;
+    border-left:4px solid var(--brand);line-height:1.4;
+  }
+  h2.sec small{display:block;font-size:12.5px;color:var(--muted);font-weight:400;margin-top:3px;letter-spacing:.02em;}
+
+  /* score table */
+  table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(16,24,40,.06);}
+  th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{background:#f2f5f9;font-weight:600;font-size:13px;color:#2c3644;letter-spacing:.02em;}
+  tr:last-child td{border-bottom:none;}
+  td.num{font-variant-numeric:tabular-nums;font-weight:700;}
+  .s-hi{color:var(--green);}
+  .s-mid{color:#b06a00;}
+  .s-low{color:var(--red);}
+  tbody tr:hover{background:#fafcff;}
+
+  /* verdict */
+  .verdict{
+    margin-top:20px;background:#fff;border:1px solid var(--line);border-left:5px solid #b06a00;
+    border-radius:10px;padding:18px 22px;
+  }
+  .verdict .tag{
+    display:inline-block;background:var(--amber-bg);color:var(--amber);
+    font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.04em;
+  }
+  .verdict p{margin:10px 0 0;font-size:14.5px;color:var(--ink-2);}
+
+  /* question card */
+  .q{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:0;margin:26px 0;overflow:hidden;box-shadow:0 1px 4px rgba(16,24,40,.05);
+  }
+  .q-head{
+    display:flex;align-items:center;gap:12px;
+    padding:16px 24px;background:#f8fafc;border-bottom:1px solid var(--line);
+  }
+  .q-no{
+    width:34px;height:34px;flex:0 0 34px;border-radius:9px;background:var(--brand);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;
+  }
+  .q-title{font-size:16px;font-weight:650;line-height:1.45;flex:1;}
+  .q-tag{
+    font-size:11.5px;color:var(--muted);background:#fff;border:1px solid var(--line);
+    padding:3px 9px;border-radius:999px;white-space:nowrap;
+  }
+  .q-score{
+    font-size:14px;font-weight:800;padding:4px 11px;border-radius:8px;white-space:nowrap;
+    font-variant-numeric:tabular-nums;
+  }
+  .q-score.mid{background:var(--amber-bg);color:#8a5600;}
+  .q-score.good{background:var(--green-bg);color:var(--green);}
+  .q-score.low{background:var(--red-bg);color:var(--red);}
+  .q-body{padding:22px 24px 26px;}
+
+  .block{margin:0 0 20px;}
+  .block:last-child{margin-bottom:0;}
+  .block-h{
+    font-size:13px;font-weight:700;color:#2c3644;letter-spacing:.06em;
+    margin:0 0 9px;display:flex;align-items:center;gap:7px;
+  }
+  .block-h::before{content:"";width:3px;height:14px;background:#c3ccdb;border-radius:2px;}
+  .prompt-text{
+    background:var(--gray-bg);border-radius:9px;padding:14px 16px;font-size:14.5px;color:#2b3240;
+    border:1px solid #eceef2;
+  }
+  .prompt-text p{margin:0 0 8px;}
+  .prompt-text p:last-child{margin-bottom:0;}
+  .prompt-text ol,.prompt-text ul{margin:6px 0 0;padding-left:22px;}
+
+  .answer-list{margin:0;padding-left:20px;font-size:14.5px;color:#333b48;}
+  .answer-list li{margin-bottom:6px;}
+  .answer-list li:last-child{margin-bottom:0;}
+  .verbatim-note{
+    font-size:12px;color:var(--muted);background:#fbfbfc;border-left:3px solid #d8dee8;
+    padding:7px 11px;border-radius:0 6px 6px 0;margin-bottom:12px;
+  }
+
+  .ev{border-radius:9px;padding:13px 16px;margin-bottom:11px;font-size:14.5px;}
+  .ev p{margin:0 0 8px;}
+  .ev p:last-child{margin-bottom:0;}
+  .ev ul,.ev ol{margin:6px 0 0;padding-left:21px;}
+  .ev li{margin-bottom:5px;}
+  .ev li:last-child{margin-bottom:0;}
+  .ev.good{background:var(--green-bg);border-left:3px solid #17a673;}
+  .ev.warn{background:var(--amber-bg);border-left:3px solid #e0a12b;}
+  .ev.ideal{background:var(--blue-bg);border-left:3px solid #4b8bf5;}
+  .ev.score{background:#f6f7f9;border-left:3px solid #6b7280;}
+  .ev .lead{font-weight:700;display:block;margin-bottom:6px;font-size:14px;}
+  .ev.good .lead{color:#0b6340;}
+  .ev.warn .lead{color:#8a5600;}
+  .ev.ideal .lead{color:#1c4fa8;}
+  .ev.score .lead{color:#3c4453;}
+
+  code{
+    background:#eef1f5;padding:1.5px 5px;border-radius:4px;font-size:13px;
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;color:#243044;
+  }
+  pre{
+    background:#1e2530;color:#e3e8ef;padding:15px 17px;border-radius:9px;
+    overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0;
+    font-family:"SFMono-Regular",Consolas,Menlo,monospace;
+  }
+  pre code{background:none;color:inherit;padding:0;font-size:13px;}
+
+  .mini-table{margin:10px 0;box-shadow:none;border:1px solid var(--line);font-size:13.5px;}
+  .mini-table th{background:#f6f8fa;font-size:12.5px;}
+  .mini-table td{padding:9px 11px;}
+
+  .kv-note{
+    font-size:13.5px;color:#4a5261;background:#f9fafb;border:1px dashed #d8dee8;
+    border-radius:8px;padding:11px 14px;margin:10px 0;
+  }
+
+  /* footer */
+  footer{
+    margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--muted);text-align:center;line-height:1.9;
+  }
+
+  @media (max-width:640px){
+    .wrap{padding:26px 15px 60px;}
+    header.hero{padding:26px 22px;border-radius:12px;}
+    header.hero h1{font-size:21px;}
+    .meta-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+    .q-head{flex-wrap:wrap;padding:14px 16px;}
+    .q-title{flex:1 1 100%;order:3;font-size:15px;}
+    .q-body{padding:18px 16px 20px;}
+    table{font-size:13px;}
+    th,td{padding:9px 10px;}
+  }
+  @media print{
+    body{background:#fff;font-size:12px;}
+    .wrap{max-width:none;padding:0;}
+    .q{break-inside:avoid;box-shadow:none;}
+    header.hero{background:#1b2a4a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body data-page-node-id="d01ySoP5opvP89AcCab93c">
+<div data-page-node-id="YC7JAeVnrUydQ4tCyDERmR" class="wrap">
+
+<header data-page-node-id="GMirIxYYdOJAmQ0QAIH5sS" class="hero">
+  <div data-page-node-id="Q7xQUn5f6Fny48LaTMOLSY" class="kicker"><!--pnid:nacqcUZtGxThBy9TVbVE2j-->Mock Interview Review · 复盘手册</div>
+  <h1 data-page-node-id="uo33KfBbRnNpsk44DRAaea"><!--pnid:fKoB9fGdrJ3X8rUMle6gUZ-->AI 应用工程师（高级）· 模拟面试记录</h1>
+  <p data-page-node-id="EkCa0j15HZimQKJlC89FI4" class="sub"><!--pnid:TmJnMk1qYoetId9SnzqC1S-->包含 6 道题的题目原文、作答还原、面试官评价与标准答案要点</p>
+  <div data-page-node-id="mPmkjrdrCsXHaBBECjtuu8" class="meta-grid">
+    <div data-page-node-id="c8ZXLxX5YuEB5Wkmn54ovd"><div data-page-node-id="XqLiRFBpKCnZviGLVylhGM" class="k"><!--pnid:Ew4XgSSZ2eUVtApIRPZa4F-->岗位</div><div data-page-node-id="JfD1x5uRvLNOOlhHo8C0rS" class="v"><!--pnid:ocAjpx2FWocRbEoQKvIu0K-->AI 应用工程师 · 高级</div></div>
+    <div data-page-node-id="pJsoO0D1TK2zWg3j7u3RmO"><div data-page-node-id="pPHdP4aB3hqQyEuFPyWxfJ" class="k"><!--pnid:a3j7va9m3VKIUfCYFJDp4t-->重点方向</div><div data-page-node-id="AORvKohQJrZ8FQCVWTEouE" class="v"><!--pnid:XxUxE956uOA1izOwDORbUo-->LLM 应用开发</div></div>
+    <div data-page-node-id="PNvfOwgn7xonF0lfGkoC2f"><div data-page-node-id="VSOvHnbfFzQJLsJ68c6Ctz" class="k"><!--pnid:od8YqAOCrbKl4JdIGPPKTE-->时长 / 题量</div><div data-page-node-id="1U7WUaAAy4WqTnhds2IkAP" class="v"><!--pnid:jMxitEoEF8Cs3tz1Ffh6vq-->约 60 分钟 · 6 题</div></div>
+    <div data-page-node-id="8tRdThweXhCEacPvJY7Tn2"><div data-page-node-id="8aFBAj59rwa1njUpAPlmip" class="k"><!--pnid:zUrDnIZBQ9mnVNOSXifxCI-->综合得分</div><div data-page-node-id="xJ97glySbac56gLul6DkSu" class="v"><!--pnid:evayNuqdUFshpp6c6NtdlI-->6.5 / 10</div></div>
+  </div>
+</header>
+
+<h2 data-page-node-id="LnRY8RBT4E02lDrbENA0aJ" class="sec"><!--pnid:Sa4FsVWK3bWBl4U6fbEFd0-->记分卡总览<small data-page-node-id="GJihSB2eeZsQvbmthH5xnl"><!--pnid:ET3Rc51WYTZwNF997rE67U-->SCORECARD</small></h2>
+
+<table data-page-node-id="BG4SaQlqW5VuJVPSyVpipl">
+  <thead data-page-node-id="eo1m2BbBD5sQde7AcYQPJF">
+    <tr data-page-node-id="I4VAnimyT2ik4IXOoVkXAa"><th data-page-node-id="btauS1deRvp7Kc88rrN1lz" style="width:52px"><!--pnid:ZKdhYZj817tRS7t6UuPFc2-->题号</th><th data-page-node-id="UGGj8vHl85A9LCK8aejIOC" style="width:150px"><!--pnid:Oy34bqtdvEjEM1pmeNwEry-->模块</th><th data-page-node-id="1F4O5c3uyFVjnOHhhTagZ2"><!--pnid:lVbPtPwVgQzCI5bIcrw8C0-->考察点</th><th data-page-node-id="JRIa3Z6oz2bbGQy9kYBE8Y" style="width:70px"><!--pnid:m4KiouUcC48HRDhRKh5yG4-->得分</th></tr>
+  </thead>
+  <tbody data-page-node-id="x8zo3Ab5WOlTMR4zSxHk6f">
+    <tr data-page-node-id="gLEXEquRYLxWSjYk48WaTW"><td data-page-node-id="K6uI0dLYJw1kEXiiVUEMio" class="num"><!--pnid:TKmOLtTTq7nxBXE1lVUfxV-->Q1</td><td data-page-node-id="mROGQVmQ0QHOjAl0WgMLVZ"><!--pnid:cTKadKJSt1n2IFFexsvClz-->LLM 应用核心</td><td data-page-node-id="rPzS3LBh49VIuwqIhNK4Zq"><!--pnid:QunF0AM1KNsQu81vwadFY0-->RAG 分块策略与内容新鲜度</td><td data-page-node-id="GjRyYUUWSQXHo9QVja1Diz" class="num s-mid"><!--pnid:jwaqkTwVkpW99kplghXx0G-->7.0</td></tr>
+    <tr data-page-node-id="qEtwe7PvAoSuwXl6bSa0Cp"><td data-page-node-id="DhxPDCO625116nBvvxooHx" class="num"><!--pnid:ZUGY6YU8PEmlzORBNFbmB2-->Q2</td><td data-page-node-id="mo8yY73asJly92E8YfBdRJ"><!--pnid:EXnWlUb3IMQBAgDsDWTmHR-->LLM 应用核心</td><td data-page-node-id="redr9wMfi5Z1FYQ182kXBJ"><!--pnid:R0IDOPnTfXnoi5NK7FgOvf-->Prompt / RAG / 微调 的技术选型决策</td><td data-page-node-id="kRx2ABIcvmNA4Z1XFi1l3A" class="num s-mid"><!--pnid:1EhXnscSSOhndiblFAXzi3-->6.0</td></tr>
+    <tr data-page-node-id="LEvIKeIoNwlhO1Rd2S6nCs"><td data-page-node-id="5lZGi3rKe71hwgZBsECUHt" class="num"><!--pnid:PMfBMIsmmX7MFMKZzpEa5O-->Q3</td><td data-page-node-id="ReoviHl5mKcq20AbOtZyeR"><!--pnid:jtTZLVCvtJBBBOzvAVeJJf-->LLM 应用核心</td><td data-page-node-id="bGhPpUgH2pU93VBXdra2Ak"><!--pnid:MzKXS7S6vlXaQEPJRQafk8-->Agent 控制循环与写操作风险防护</td><td data-page-node-id="oUH9Kw5pa8hauS2eIBkPcZ" class="num s-mid"><!--pnid:Fb5Y3zGDKAVbw8OAibBurs-->6.5</td></tr>
+    <tr data-page-node-id="tp3wbnxP4wj4K5FisJ9LPu"><td data-page-node-id="rkZpvXTqXxB2Evdc9sDpQP" class="num"><!--pnid:7fyJZIINukKlQMkeXipqXw-->Q4</td><td data-page-node-id="syw13ssReG9CsrqZ33o7G0"><!--pnid:DFoAibKu5XXbb15jX3vO1M-->系统设计</td><td data-page-node-id="lfYfyNaK8hRwIO4HRYSbH3"><!--pnid:tAtcv3l1NeiNFQWuPsqqP0-->统一 LLM 网关的架构与治理</td><td data-page-node-id="SuYhao9sxx4ZZKzRhrAlFX" class="num s-mid"><!--pnid:vUOfDWn1Poyy5K5Lvapi4R-->6.5</td></tr>
+    <tr data-page-node-id="oANTW4YeGoAkiOihlDBLfV"><td data-page-node-id="bSlARdNrpV6NoR1J4QUEuB" class="num"><!--pnid:hqvLDNmwRhiEVDNQhXRykf-->Q5</td><td data-page-node-id="Ln1J6IhJCZbJoiaIjoZI7Y"><!--pnid:Vb4QPAYhQ2gPfL12pmyLhJ-->评估体系</td><td data-page-node-id="ElP2JLS7jfrtu31OMPK0Af"><!--pnid:fKNMu8u8TSr0F30VJwCs1f-->RAG 离线/在线评估与回归防护</td><td data-page-node-id="kHVqvwo0yP21muXqZO5Drq" class="num s-mid"><!--pnid:XMpo1gGfxRTFG02qFeuIAh-->6.0</td></tr>
+    <tr data-page-node-id="uMCt66lHPgmXeOIN7VfmAT"><td data-page-node-id="mAoLvoPmtV3sIF7wsLORmn" class="num"><!--pnid:XoRIQ6AOrxs1kHJfIRDWSd-->Q6</td><td data-page-node-id="TWYakXWfXe38grInD23wU7"><!--pnid:WzSK3P0nmLhIMJx5BlggXs-->行为面试</td><td data-page-node-id="Ma4nq3crWsYf2oz9HuEtpl"><!--pnid:rL2ahF1hy1ixqgqgsnW6xy-->失败项目的复盘与推动力</td><td data-page-node-id="Wl0atpe9zkZFcqZXM00SeH" class="num s-mid"><!--pnid:aoGaCZIIJs5eDGloxVHRig-->6.5</td></tr>
+    <tr data-page-node-id="gKbIwfSsHiSqctZHeDaIR2"><td data-page-node-id="16rdXab9OASuLt2kTUxKG2" class="num"><!--pnid:Qw37bbCoLqX1psfKXuK3Eb-->—</td><td data-page-node-id="s8IBvEPB8ZnOTpyKHLBqf5"><strong data-page-node-id="8FFU672R8sh8NQgkf2leFr"><!--pnid:YQqcyhi40gnM2xkNNSPWaB-->综合</strong></td><td data-page-node-id="qTeiPkFnOeDAYTrAm8TXFU"><strong data-page-node-id="0NVgf4ZaJzpuHk2JTFJBUc"><!--pnid:8cmGpLYK2buiyAJbI5buQg-->总分</strong></td><td data-page-node-id="oPgYwjr8EhdUvbl6gezQf1" class="num s-mid" style="font-size:15px"><!--pnid:oMy3NCbKNorbXgvu4GHy33-->6.5</td></tr>
+  </tbody>
+</table>
+
+<div data-page-node-id="Xi7GHo1JYhm0N05BqD4Tgh" class="verdict">
+  <span data-page-node-id="OPZJG0hMbFEKx3zSZESwhN" class="tag"><!--pnid:somALpasVnBoCiJHWc7UVS-->裁决：LEAN HIRE · 偏弱通过</span>
+  <p data-page-node-id="6FdGssJcS0YtAAmz0ZRQhO"><strong data-page-node-id="IKqpAhhWgl3iORZGmqce0y"><!--pnid:m9jfZvZnTdpM8vXyn30uCk-->对高级岗位而言 6.5 是临界线。</strong><!--pnid:Kv9LEdQYcIAaBgNgvTg6ja-->建议：降级至中级岗位录用，或以「高级 + 试用期重点考核评估体系与系统设计」有条件录用。</p>
+  <p data-page-node-id="0x872JtxaKnjMMkE5GK7Qq" style="font-size:13.5px; color:#6b7280"><!--pnid:egL7zwLB1EEzFVtzn6SUQT-->优势在真实落地经验与架构直觉；短板集中在<strong data-page-node-id="YCwLVusNnbE0Jfyqzwf8ZS"><!--pnid:4D8v5T3FB70hPHd0sDraAV-->评估方法论</strong><!--pnid:LvPVvsamq28W89sSz862Kf-->、<strong data-page-node-id="2OjB3kGykHdiEhJ51EuDsN"><!--pnid:lvjxMPplEbrawlkdSyzN3k-->框架化表达</strong><!--pnid:h6sxyz5iXw4whYC4sUA9l9-->与<strong data-page-node-id="oWOMuRyqmQBceRBQofNJnk"><!--pnid:zXQZQJz8h7dwolZIZqpVAi-->工程严谨度（幂等/熔断/度量）</strong><!--pnid:60yXCffqo4eprPSFAnwMbu-->。</p>
+</div>
+
+<h2 data-page-node-id="RVoFVe6H59ZLQVoHYzzHEw" class="sec"><!--pnid:jUL1nd7yCbuxZkTgAw4xfh-->能力雷达（按维度）<small data-page-node-id="72eEquSlOf6fBVq0LJx1nI"><!--pnid:zyccOaupZjIAW17D5z0qUY-->COMPETENCY BREAKDOWN</small></h2>
+
+<table data-page-node-id="iCH1UCj9S8VFDrRepNPDCy" class="mini-table" style="box-shadow:0 1px 3px rgba(16,24,40,.06)">
+  <thead data-page-node-id="gvxTOUpUYeOqJB45KP7wIy"><tr data-page-node-id="TvBdY6cMscFQ2QX5ZrxHlY"><th data-page-node-id="i3ayZYZcgL5lrLtnSRx1Ms"><!--pnid:u2B3GZzKNLMsaZL3Cn7KIw-->维度</th><th data-page-node-id="ylaskeJsJPNH0aXngNBSGI" style="width:80px"><!--pnid:3za2hsx6HG4IW7L6b9HGVW-->评分</th><th data-page-node-id="tysvtnCcUijQGlM30MupQZ"><!--pnid:ReflGaux0KkpiF1W2en3J7-->判断依据</th></tr></thead>
+  <tbody data-page-node-id="G3fuMugpmH18k0nq5Gibg2">
+    <tr data-page-node-id="ZIQ1cNcPOtZaRMcOgksaMu"><td data-page-node-id="8wHYgrFonZV23zrXplv1oZ"><!--pnid:pWrPUp1fTpKNFwVc3LuttM-->LLM 应用链路认知</td><td data-page-node-id="rYtgemoa52GeH2weLmMl10" class="num s-hi"><!--pnid:XDaFGZUuhKUP4XP3fEKS3O-->7.0</td><td data-page-node-id="TASWfWswthva75bbOxjdMZ"><!--pnid:SGdVEAB1sC1GpJQMbFIbY1-->分块→检索→重排链路完整，有实战细节，方向不跑偏</td></tr>
+    <tr data-page-node-id="qSYA8TqQdarT0BE4pmGwBm"><td data-page-node-id="5iR3M0vxkWGlrREFfYIrfA"><!--pnid:adFvp3rqvpHSULNJJ3mKwU-->技术选型与判断力</td><td data-page-node-id="BS0cWX05o7q73Mpp2MQM8O" class="num s-mid"><!--pnid:pJAgkoNjmoxoHOH9gzLBIN-->6.0</td><td data-page-node-id="tZmGyEAvGZflZw8iHEjzXz"><!--pnid:7IPuZ8TiSwuYVTUp4KFoUK-->结论多数正确，但缺少可复用的决策框架，B 项认知滞后</td></tr>
+    <tr data-page-node-id="BtzflmrbpDBpTM3VfbdVIA"><td data-page-node-id="mzivkS91YyeMtx0pb4p1fv"><!--pnid:MQJw1babSTxz0Ma0UueNmB-->Agent 工程</td><td data-page-node-id="18rp3Hn775oFk7pRnsThwF" class="num s-mid"><!--pnid:qGewkBlVTaBb06RLJFTJM0-->6.5</td><td data-page-node-id="vF3HsOe4ii4CrniFMMmxS6"><!--pnid:3OeYun16INRGc4GSL7k4Jt-->能识别 workflow/agent 边界，但成本与可靠性手段单薄</td></tr>
+    <tr data-page-node-id="yex2LNoZ36AN1nfu23Rbdo"><td data-page-node-id="qwYk30yV5QlBDZiQ1wsrya"><!--pnid:iMt2jUziHCvMyl5p9HnE0X-->系统设计</td><td data-page-node-id="O0T2vVKyXXmAAQabPLEWac" class="num s-mid"><!--pnid:W79eoDGqugumyFHUrJGYdG-->6.5</td><td data-page-node-id="qyhq6kRgf2sAaHyAjl0EYI"><!--pnid:Gwl676X60RvmMLsNFdke5J-->平台产品思维好，模块拆分与故障推演不足</td></tr>
+    <tr data-page-node-id="bsfSg7jSMejuLLkNPb1Ygk"><td data-page-node-id="ngTi4ePAS1EsiUTu87gaIA"><strong data-page-node-id="2OizO3gpVdzEeN3gl1jLG4"><!--pnid:iAIYGnqdJ4Unbk9AtefhN1-->评估与度量</strong></td><td data-page-node-id="vieTTIf7K0u7PmTdnF0Wdn" class="num s-low"><!--pnid:Y4sFCpXgkrHxY0zIRGvR2X-->5.5</td><td data-page-node-id="t3X0kLjlK6A3wTbVhslt3D" class="s-low"><strong data-page-node-id="GbUnxBheJVXdEtsQwpgBza"><!--pnid:goHECAE0cfZPv2xI3KYerg-->最短板</strong><!--pnid:X4PqEc53tGAV6jCXjOyCgF-->：LLM-as-Judge 概念错误，在线指标缺方法论</td></tr>
+    <tr data-page-node-id="mHRYMGdQWKDyQpcxJ5pTMh"><td data-page-node-id="CWAn8C6m90cCUIPiJ3N0pn"><!--pnid:blwbkjaNI2hmvkWmSrJ6Ja-->工程严谨度</td><td data-page-node-id="zhfbls4eoZxDmJrTnWr2Jz" class="num s-mid"><!--pnid:aCsPp5nSQI6bWZHxl6HPVr-->6.0</td><td data-page-node-id="JpYyHdytGXJ8H9iwmS00Cm"><!--pnid:ZY8ha2cVxF8ZY5Kw07j0O6-->缺幂等、熔断、超时预算、流式处理等关键机制</td></tr>
+    <tr data-page-node-id="rbsycMvkyEv7kECM8cRQm8"><td data-page-node-id="NpXRucTZpXfLabYDXTXmPv"><!--pnid:mxZubQtRDuOVZeHIqU67aY-->表达与结构</td><td data-page-node-id="gPQ1CZ0CDKaPgAOwwHCM6r" class="num s-mid"><!--pnid:8BDITcW7yWfFtEgiU8LIOe-->6.0</td><td data-page-node-id="z4x8OHumIu9IWXzHmaUbIz"><!--pnid:hNoA6jLRSD5qtt6puOsS4D-->信息密度高但发散，结论先行、框架先立的习惯未建立</td></tr>
+    <tr data-page-node-id="ffp9VQK6yjSPzQ2CU6uTUN"><td data-page-node-id="scADJM03tJWapOvi102dCe"><!--pnid:Ee8dS5HMWR8OC2fvgQ6Ujz-->复盘与自我认知</td><td data-page-node-id="QeRRcsWIfgmqcyQtm4yziE" class="num s-hi"><!--pnid:du9Hs6RG5r2iuVn3urBP0X-->7.5</td><td data-page-node-id="7vQvaUYqFWY2urbUgJT9sr"><!--pnid:XmHW6N1zGAM78BXHSJMKKp-->能准确归因到架构表达力这一层，诚实且有改进方向</td></tr>
+  </tbody>
+</table>
+
+<!--pnid:65MlzLWBbVavJuW9BC2g2k--><!-- ============ Q1 ============ -->
+<div data-page-node-id="ZDCYqX8BqxOUS43jcXXANW" class="q">
+  <div data-page-node-id="PIghZbI92sc18KvUvIJ7AP" class="q-head">
+    <div data-page-node-id="zRhTNwdXhOfm4wkVX6OGYC" class="q-no"><!--pnid:6RYQSy9PKERMC1rf2RzrGs-->1</div>
+    <div data-page-node-id="m7rA99ItvnTzs0uhQFa7xR" class="q-title"><!--pnid:0CK1Yqpw6SJZHtwGsIKKHy-->企业知识库问答系统：分块与检索策略设计</div>
+    <div data-page-node-id="L6DTvALg1IMdq22PJX76Zd" class="q-tag"><!--pnid:NB1354deAa6kQPV9yZYCMw-->RAG</div>
+    <div data-page-node-id="55lOq35AolakY9ACs4T7mb" class="q-score good"><!--pnid:Utt3lEFkQ0TLbucp0b3rpd-->7.0</div>
+  </div>
+  <div data-page-node-id="U1zWnkZmiacIWCSjm0HycT" class="q-body">
+
+    <div data-page-node-id="wLNtTnbGRZGHmqnrFFAbuc" class="block">
+      <div data-page-node-id="bpk3Zat66D04l0Sh11prhQ" class="block-h"><!--pnid:ch6sC5nGHUwdYSe3p0Dvsd-->题目原文</div>
+      <div data-page-node-id="NQ9uX2QsZV7FCPezKCUGCb" class="prompt-text">
+        <p data-page-node-id="8f84hoXtnymza2aDvnMAe6"><!--pnid:W0sVLb1WteD0kN4N62wzzE-->你负责为公司内部构建一个企业知识库问答系统，知识源包括数千份 PDF、Confluence 页面和数据库文档，用户反馈的核心痛点是「答非所问」和「答案过期」。</p>
+        <ol data-page-node-id="xgs3Tk5NOy1AiTvJlACGvf">
+          <li data-page-node-id="WRoWpAoWqCZRdkKEN9WmKh"><!--pnid:VymHgYd1m1NL79k1gmZf8i-->如何设计整个 RAG 链路的<strong data-page-node-id="3X6C8TscNfxVJm44pW1Dx7"><!--pnid:7rcWtgsfWuSPCd7JdVqaNK-->分块与检索策略</strong><!--pnid:q9JbvbSUmRldJN1a0yTRR3-->？说明分块方案的选择及理由。</li>
+          <li data-page-node-id="3gwRv8ew1BV3bBVMcqcDKJ"><!--pnid:edWNJXgi3XuQDZlUQ7feYk-->针对「答案过期」，有什么机制保证检索到的是最新、最可信的内容？</li>
+        </ol>
+      </div>
+    </div>
+
+    <div data-page-node-id="hklrelxuwl0jsvAe8WBrvJ" class="block">
+      <div data-page-node-id="j29431ioD9JOgbFgncTz4c" class="block-h"><!--pnid:0CW7EEOEq4JsKQ2WT7884s-->你的回答（要点还原）</div>
+      <div data-page-node-id="4X83kQt7t929z1G7CkB8yo" class="verbatim-note"><!--pnid:uqfVIsD34AywplP28nC8t5-->原始作答为语音转写，以下为忠实还原的要点整理，保留了你的原话逻辑与术语。</div>
+      <ul data-page-node-id="c5CAIvPA0pvY141E7paETC" class="answer-list">
+        <li data-page-node-id="3KYQO00bqs34e6abRzm4fd"><strong data-page-node-id="LuEo6Qu02nvbnGfzHyGxR5"><!--pnid:f9yL6TBfV4fkakOaBjsvSt-->分块</strong><!--pnid:yyc0xvPAjxrDQenk1cPlLn-->：以<strong data-page-node-id="SOKFxnQQRHmuR8xq8596v2"><!--pnid:NvWpjS5wAux3KSmJQjkowy-->结构化分块</strong><!--pnid:HSWwM9PWuEFTLwyH2U4gQs-->为主（企业内部最常用、有保障、适用面广）；另有按组、按行、递归切分等多种策略。</li>
+        <li data-page-node-id="ZE5Pi3nTzD9vCdhYzpdGkO"><strong data-page-node-id="9pwlSxsF7ZErKZ9VYCLtf7"><!--pnid:ZawIiIDgucZQJUQmRZDWI1-->落地做法</strong><!--pnid:6QFRsA8cLCM9oeoxbtP8LL-->：PDF 解析后转成 HTML 标签，标签本身有层级结构，按标签切分；切分采用<strong data-page-node-id="cXHjMDidovnNIAwvRsHyAf"><!--pnid:z1l9LaOTZl6WxGSRJtnN8i-->递归切分</strong><!--pnid:qECXjJ8II5zEPLcXnjJnbv-->，自顶向下，设定最大字符数，尽量保证一个标签的完整性落在同一窗口内；若父标签+子标签超出上限，则父标签放一个窗口、子标签放下一个窗口。</li>
+        <li data-page-node-id="k7t1eCBLVJNwtkFAww5ILR"><strong data-page-node-id="7E7T9UisSn2LySCByhVgGi"><!--pnid:0xEMLTwzMGfwFYRzzPy7na-->检索链路</strong><!--pnid:lyomjMro8MoqG6y2pab4Rd-->：原则是「能上的优化都上」——查询重写 → 元数据/标签过滤 → 向量化检索 → 关键词检索与向量检索并行 → <strong data-page-node-id="KRRySD6esbbvUKiusxbYIu"><!--pnid:eQnDDZPwoLAd1kLRXaRsa0-->RRF 融合</strong><!--pnid:PScmZsKEyO4x89MLd3GxX4--> → 取 Top-K → <strong data-page-node-id="FHQJAlgbREnqSlSspLZ4TT"><!--pnid:nXiwADnYhu8M4XNOeR22J3-->Rerank 精排</strong><!--pnid:WyigZWnuyeLhgG1gaYPAHY--> → 送入生成。</li>
+        <li data-page-node-id="qTx7UnwIZxpejE6u3Z196b"><strong data-page-node-id="CHxDamA3MPUtWYhSxbdx9E"><!--pnid:qIGPVaOdRryXiEoP3znEXJ-->进阶方向</strong><!--pnid:POn8KeO5WPEVXvNwWZs8YR-->：企业知识可构建<strong data-page-node-id="5EAEWBMxZMY64PTEWoODCQ"><!--pnid:Unt7I93ylYosZtOhd6sTsM-->知识图谱</strong><!--pnid:2b0OMVGizjTdDNKgdvSdgc-->增加图谱检索；当前主流是 <strong data-page-node-id="ii3K5YuyClohaoKuubLbsX"><!--pnid:ZfAo8HmIweAYzEEISryrTM-->Agentic RAG</strong><!--pnid:qZurzox0JQFQo2LFq0MpV2-->，由 Agent 循环做意图澄清、追问、答案汇总。</li>
+        <li data-page-node-id="yakjtIkWa31wXffrmChHjs"><strong data-page-node-id="1PNblfnLGxZsmke792p6cR"><!--pnid:kTLrLPgRtl8LBVnn6s8mhL-->答案过期（首次）</strong><!--pnid:L0RThmLb5GSfohLqvO6LqI-->：说明检索到了旧内容。① 分块时在 chunk 元数据中写入时间；② 在提示词中让模型关注时间问题。只想到这两点。</li>
+        <li data-page-node-id="ed2IHL3vChPN4gkGqEgdD2"><strong data-page-node-id="nHCF2OWdnbwJe1vlFZ2zLR"><!--pnid:rDqtTxcNgev9jwkP6NNY78-->答案过期（经提示后补充）</strong><!--pnid:wb5Z35V3H4TvT2mFomSzcC-->：③ 新文档替换时直接删除旧文档，索引随之删除，就不会检索到；④ 多版本共存时，chunk 元数据中存版本与时间信息，检索时据此过滤。</li>
+      </ul>
+    </div>
+
+    <div data-page-node-id="7nmD3mOluKbUiHiAfe7KqI" class="block">
+      <div data-page-node-id="X4SFLVKA8URDuXO3SmPT6O" class="block-h"><!--pnid:U46h62Wka6Oiwxqwx0eO9n-->面试官评价</div>
+
+      <div data-page-node-id="VD0ffNJyyMMOATzslLtXFI" class="ev good">
+        <span data-page-node-id="LzJW0ztn4ksZcxL27qZGJw" class="lead"><!--pnid:58ml1BY8PlFcRMZlroqkMs-->✅ 做对之处</span>
+        <ul data-page-node-id="IoxW7zc6eOnVoOsZ9ZHK39">
+          <li data-page-node-id="uUEDpjQuZxgs44y0j3qEXK"><strong data-page-node-id="GGpg0Ov0CKFsCCPPKknXYK"><!--pnid:eSzPOZ8HO6nVXc33m0AAyZ-->分块有真实工程细节</strong><!--pnid:ZgDEG5lc5yjXzoAhm1v7ID-->：HTML 结构化解析 + 递归切分 + 父子标签的窗口完整性处理，本质是 small-to-big / 父子 chunk 思路，说明确实落地过而非背概念。</li>
+          <li data-page-node-id="CooeY4wpzCoecJLjZBPt6f"><strong data-page-node-id="Yvp0Q3USePnACcmJpy6c5Z"><!--pnid:gpjwGmXDn4iVF7cMDNEzkg-->检索链路完整且符合主流</strong><!--pnid:XiJX1eV4Qc2pOmnJ4kFER5-->：重写 → 过滤 → 混合检索 → RRF → Rerank，还主动提及知识图谱与 Agentic RAG 的演进方向。</li>
+          <li data-page-node-id="Hn5faJ17Snz9mIAC1RvdIT"><strong data-page-node-id="PElgD7too2SL2QoS6hFoCY"><!--pnid:Natj5jtLYaOVaNYYSGhjit-->补充部分有救回</strong><!--pnid:a9lkLd0Tt3MBGCtC2Wj7rM-->：文档替换时删除旧索引、多版本用元数据过滤，方向正确。</li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="PMQOa7W60AcmzGGgaNBVkK" class="ev warn">
+        <span data-page-node-id="NiA7oumHJRDnVP0PRotStc" class="lead"><!--pnid:2TVU9f8JfIJ2Rq4fbJVIV2-->⚠️ 待改进</span>
+        <ul data-page-node-id="6DA62hPf2XwjYbZfKQWDkN">
+          <li data-page-node-id="JgiIOt3HOCvjwKVZjhjwtZ"><strong data-page-node-id="1TFXkrHMSoMGBqqTmpAPk9"><!--pnid:WFFm8KTJwA8MjpByGIU1uc-->「能用的优化都上」是危险信号</strong><!--pnid:lhKrZ0NUuK2wQnyqOs52CA-->。每加一层（重写、RRF、Rerank、图谱）都有延迟与成本代价。高级别要讲清<strong data-page-node-id="ZeG6x5lpJe9ArGuAhJUuNV"><!--pnid:46aGlMZuHuTk8kDo7i11Gs-->何时上、上哪一层、如何用评估集证明收益</strong><!--pnid:6Ba9pd8o9dIKAbqxHbSBfe-->，而不是堆料。</li>
+          <li data-page-node-id="Ra0Mmotfv2esrUd6edBJwW"><strong data-page-node-id="M1mmoo0xJDAWKtLXqSWxTy"><!--pnid:ridoSmoN5sT93yQCTy1MCg-->新鲜度首次回答偏弱</strong><!--pnid:9Wnmp5CftriMTPhfDjlOnN-->，只落在「元数据打时间戳 + 提示词提醒」，而提示词约束是最不可靠的一层。</li>
+          <li data-page-node-id="SxyK0janmaEFGMFYGhNZoZ"><!--pnid:5EwdQ7ZYlD8cUblImRnYm0-->缺<strong data-page-node-id="WYnpmUBLBFDC68wNWnX3V4"><!--pnid:yNZdJWXpX8Bg0DB8HWbIfg-->增量同步管道</strong><!--pnid:udAtKcNL4qkOhR0pIcN1l5-->：企业文档持续变更，靠手动传新删旧不现实，需要 webhook / CDC 驱动的自动 re-index 与失效 chunk 清理。</li>
+          <li data-page-node-id="AewX84dHHj84zSwOHLPwbO"><!--pnid:77bMbBout0ZBBWBy4YTxGy-->缺 <strong data-page-node-id="qS9aTRnsNqGfKTTD7kA57k"><!--pnid:CbNQLdLH5DD072W6U6v14g-->chunk 级有效期</strong><!--pnid:ylQWOAV6QqFluhWXB6uWYI-->：除时间戳外应有 <code data-page-node-id="Jvuvc2r4nAbolZygl5jl0a" data-pnid-children="HKR2GRhA63CUy6lZocE93n">valid_from / valid_to</code><!--pnid:Yj4QKTtYldLSTwfu826j7R-->，检索时直接过滤过期 chunk，而不是靠模型自觉。</li>
+          <li data-page-node-id="LP4LndGPHBjzhmIGuNFxNh"><!--pnid:8YkNmLVGdaBCyOnbscTyph-->缺<strong data-page-node-id="N8ODUpiB30RKtzkxfrkeK7"><!--pnid:51ze03BuQ5whgp00uG55zF-->权威来源分级</strong><!--pnid:fjlFGg8vszrWq2RfXco2xE-->：同一主题多版本时，只按时间排序可能选错版本；应按来源权威度（官方制度库 &gt; 部门主页 &gt; 邮件归档）设权重或默认过滤。</li>
+          <li data-page-node-id="d98rNe3MCINs01AldGeCuZ"><!--pnid:SEsHnkptH7E6MLsioZVjPT-->缺<strong data-page-node-id="bDICR405csfc3h52eiqJ3J"><!--pnid:GH0U8BJW0XzzQEd7r9z91z-->答案侧兜底</strong><!--pnid:9V60iJdPggKn8Wuy3U7iCA-->：强制引用溯源（citation）、检测到来源时间冲突时提示「该信息可能过期」。</li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="HmGWweKkk4xVH7KUU0QB7c" class="ev ideal">
+        <span data-page-node-id="7xL7vvyo70IkAxqLzbrUrz" class="lead"><!--pnid:bI2BqdVHAxADbXYngSNn0x-->💡 标准答案要点</span>
+        <p data-page-node-id="8cWCvkcpg351o5yjr3F1Mn"><strong data-page-node-id="JW4DHG6mVSamXMFlZdXRAh"><!--pnid:iQnSK2Y0blsaBlIlm2Tzoh-->1. 分块策略（按文档类型分治，不搞一刀切）</strong></p>
+        <ul data-page-node-id="vHB0yvqhTThghkHF8e3bjy">
+          <li data-page-node-id="7eZhyKzeGVxrzLH2JMFF2f"><strong data-page-node-id="sK1fRLcAmnRBCumKRyo46w"><!--pnid:XqeFNEuWiGXrqH8vDP7Uoy-->结构化文档</strong><!--pnid:w59XsTgBwnjoWnte0iCj3Q-->（PDF/HTML/Confluence）：按标题层级与语义单元切分，保留 breadcrumb（章节路径）作为元数据，避免「断章取义」；表格单独处理（转 Markdown 或结构化摘要），代码块整体保留。</li>
+          <li data-page-node-id="2vMGSRz80jMPYdIOEcXovj"><strong data-page-node-id="yhtvo1y6lSdIW5tHRDOshW"><!--pnid:rIOrrKVomS2dE5G5202z9Y-->粒度选择</strong><!--pnid:HOIZ0oiNWEhAbtfV9vEF3s-->：主 chunk 300–600 token，overlap 10–15%；采用<strong data-page-node-id="bxt3dW1nLjaRMayV8g6bMm"><!--pnid:pq1ZpcA3MlTm5TWcCXyljq-->父子分块（small-to-big）</strong><!--pnid:LKQd5VxjLPJwLTRYHLDDzR-->——用小块做检索命中，命中后回溯父块送生成，兼顾检索精度与上下文完整性。</li>
+          <li data-page-node-id="rwCzfLRlMWVy6uZQnaOppC"><strong data-page-node-id="inZwUf6ctUUV4xzrzrhKlE"><!--pnid:KE1WNKJAjJ4WdMRSGipEHq-->元数据必带</strong><!--pnid:MJglTAvlwgz5h8cUpPeomx-->：文档 ID、标题、章节路径、来源类型、更新时间、版本、权限标签、权威等级。</li>
+          <li data-page-node-id="XcPl4AX0srbfpmBcijc9fv"><strong data-page-node-id="9o6eBYoLS2kcSDqKOOoDSs"><!--pnid:aEo5d2qIWl4y2FJc9acEF1-->切分质量控制</strong><!--pnid:GJ5iQ6UceJu8i6JrwK3di7-->：抽检 50–100 条，检查是否有切断的表格、孤立代词、缺失标题；用「切分后单独看这块能否自洽回答」作为验收标准。</li>
+        </ul>
+        <p data-page-node-id="iCBZAKJe3KRsiMmNqYicUP"><strong data-page-node-id="LMg59Fv0tvg2KlYw8ERZet"><!--pnid:ewnWQ5XnNdhsjH4M0Avq6Q-->2. 检索策略（分层，按需启用，每层要有数据支撑）</strong></p>
+        <ul data-page-node-id="CSKVIggHxPhjuHM6ly9f8c">
+          <li data-page-node-id="5TyQAE9ge205F1XrKLJWuB"><!--pnid:RxalvLA580lsPiStWKEFx5-->基础层：混合检索（BM25 + 向量），RRF 融合 —— 这是默认必选，收益最稳。</li>
+          <li data-page-node-id="AW2QaDJx7N6jsm1sZDfPY3"><!--pnid:qOU97tDflZTjbTvwkDRu19-->优化层：查询重写 / HyDE / 多查询扩展；元数据预过滤（权限、时间、来源）。</li>
+          <li data-page-node-id="1teD3u652Gu1DbC3hSWMd7"><!--pnid:zNF2OqL5typWUBd6aaaMvf-->精排层：Cross-encoder Rerank 取 Top-5～8 —— 延迟 +50～200ms，需评估 ROI。</li>
+          <li data-page-node-id="8QbxPy2vD0CxCuJCWQhNLl"><!--pnid:Prx7bLqaTAI1IaldLv6Dpb-->增强层：知识图谱多跳检索、Agentic RAG（意图澄清/追问）—— 仅在多跳、指代消解类问题占比高时启用。</li>
+          <li data-page-node-id="tJvUtEnPmCEfWqNzMQ35U9"><strong data-page-node-id="mJ8LlV2W130mzZ4AbgPT3H"><!--pnid:8izS6j4oRvKW8bGfgObXyM-->每层都要挂在评估集上验证</strong><!--pnid:Ul7JDrnznGud2jdrJFglNv-->：加一层涨了几个点、多花多少毫秒，说不出来就不该加。</li>
+        </ul>
+        <p data-page-node-id="TCbY9HcGMRKz4YBkXqGAca"><strong data-page-node-id="wRd6rPwYbMlFvKJhtYMXbH"><!--pnid:AIBPhPyLAwYOOXjwBEkjU5-->3. 内容新鲜度（三层机制，缺一不可）</strong></p>
+        <ul data-page-node-id="ySy9Aajc31lYxEoL7JTOwZ">
+          <li data-page-node-id="9X21ce6E6RmlZdNdcPmoN2"><strong data-page-node-id="ll8i25iRhu204ZKvaAFx5J"><!--pnid:t7WmQcci882TCekHmuz8PK-->数据层</strong><!--pnid:AJJMZHI8Jbs5Ew69T4dPiu-->：文档源 webhook / 定时增量扫描 → 变更检测（hash/版本号）→ 差量重建索引 → 删除或标记失效 chunk；建立「文档 → chunk」映射表，保证可精确删除。</li>
+          <li data-page-node-id="nJslbhgXPmQTAXimPwV9C7"><strong data-page-node-id="9F9daRC2dShhibD3DsBCce"><!--pnid:Q0X5o04d2TiNJSbrt0BqGU-->检索层</strong><!--pnid:iYzbbzHZGYaUwLb5HHNccu-->：chunk 带 <code data-page-node-id="hBz55wexyYCOcsB0fIhZKO" data-pnid-children="eDAI6KnG4cJVNWs9Gkj4MA">valid_from / valid_to / version / authority_score</code><!--pnid:tN9vvjEkvVkiwj7ujaWwJ9-->，查询时按时间窗与权威度过滤、加权；同主题多版本按「权威度优先、时间次之」排序。</li>
+          <li data-page-node-id="7Hu81DxUnIAGT9y3l7vQnv"><strong data-page-node-id="PB7dZI3nJoz226is61ZxaH"><!--pnid:BWdlwvCHmkvCUTkwUpd0ig-->生成层</strong><!--pnid:Sw3srIgoxVXFmHRS0xPS01-->：强制 citation（答案句 → chunk ID）；输出附「依据文档 + 更新时间」；来源过旧时显式提示「该信息更新于 X，可能已过期」；检测到多来源冲突时并列呈现而非强行合并。</li>
+        </ul>
+        <div data-page-node-id="slrErVrbHueLIXB2b2ESvD" class="kv-note"><!--pnid:jK6olkcgd8flzmr09UHOgH-->加分项：把「过期」当成可观测指标——统计「引用 chunk 超过 180 天的回答占比」，作为数据治理的北极星之一。</div>
+      </div>
+
+      <div data-page-node-id="itrnzAuwKV0lDea9GFKpuj" class="ev score">
+        <span data-page-node-id="wi0mdFjQS9xhmmG0ojSJhw" class="lead"><!--pnid:9Pa6jy8GUV6CLU5cte7b3E-->📊 评分：7.0 / 10</span>
+        <p data-page-node-id="kviSceiAgvuFE9rEVM0FQm"><!--pnid:hGoClTA50eUkOYxXGRFLdR-->分块与检索链路达到 7.5–8 分水平；新鲜度首次回答 5 分、补充后约 6 分。综合 <strong data-page-node-id="sz7qKYZW45HDDYt0RECZQB"><!--pnid:2nxR6QDuUxS4T7Ysv12uc7-->7.0</strong><!--pnid:kttaf7q7u5KH6ukBDeBzzn-->——合格的高级工程师答案，但在「按约束做架构取舍」与「数据生命周期管理」上还够不到 8+。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--pnid:TIiDC10kc0tzhWMDK544Tc--><!-- ============ Q2 ============ -->
+<div data-page-node-id="gYTkesDuh36cugwtSpmKBl" class="q">
+  <div data-page-node-id="0hVEx5KDdSYvQKKzafYV9k" class="q-head">
+    <div data-page-node-id="GD12VT1j1fseOoiv26hfqx" class="q-no"><!--pnid:OBDie4VoT65eE6jyfr43qz-->2</div>
+    <div data-page-node-id="aF8Pj0LLRC1VvYgyt8SxC4" class="q-title"><!--pnid:1zPo9tfrdcGWjl8NqVmb0L-->三个需求的技术选型：Prompt / RAG / 微调如何决策</div>
+    <div data-page-node-id="lyu4T33dJnqea3WiQp4snW" class="q-tag"><!--pnid:8blO2hlEuaHd5cjI4VUKMY-->技术选型</div>
+    <div data-page-node-id="KYvmxXYaiPklnQomV0sFBR" class="q-score mid"><!--pnid:IgRXrmDlG5ZekFWAT2lukk-->6.0</div>
+  </div>
+  <div data-page-node-id="wUShaup4psQxjjaem8tsiv" class="q-body">
+
+    <div data-page-node-id="BPB0klcnfj0Tt8FnVgKwos" class="block">
+      <div data-page-node-id="Pv9ZAmC6lbqQ9HV1UKu3pc" class="block-h"><!--pnid:8iYdu4Rdz5DF7r1IO5tkZU-->题目原文</div>
+      <div data-page-node-id="YVZD8Gs7CeqtP2A1CdYApw" class="prompt-text">
+        <p data-page-node-id="3VyYDGDEXiughq93JLbiZb"><!--pnid:kIx7Berh4Sf6YXoPXTyldY-->业务方提出三个需求：</p>
+        <ul data-page-node-id="lGo5P42DiJE7BfQBLB9xYL">
+          <li data-page-node-id="Hv5GoupKvF1h2lJK79KWAv"><strong data-page-node-id="nzj3xsaUeZeqcakYQraKZT"><!--pnid:wNBKokpwMSLja560xpbqKA-->A</strong><!--pnid:fgz8DUHwY0ow44glKoBEi3-->：客服机器人，基于公司产品文档回答，文档每月更新，要求答案可溯源；</li>
+          <li data-page-node-id="1r2Azq3O2jjicKKSrRfbJe"><strong data-page-node-id="GgrTHYmzJlfZBxOezi7o9s"><!--pnid:csou3tUIaHUiE6wmF5ekZp-->B</strong><!--pnid:rodVVXxktlwlLgEsR872DV-->：合同关键信息抽取（金额、签约方、日期等固定字段），已有 5000 条标注数据，要求输出格式严格稳定、延迟低；</li>
+          <li data-page-node-id="xpB1Xgbrv9ghTjaVqwd25t"><strong data-page-node-id="0AeopSitMsV9Ya8Wg0yY6Z"><!--pnid:xKy9OSBYW58ClQ9Z3GyfaU-->C</strong><!--pnid:FAa9MAeH2xJdC280i45U0F-->：把内部代码库的注释风格统一改写为公司规范风格。</li>
+        </ul>
+        <p data-page-node-id="PW79MwieFrwldQCQjUoqSo"><!--pnid:SN9ap2nFRWIPT7boxtTCJV-->三者分别选 <strong data-page-node-id="bdXP9cyEs1WNzk0v1tGwrM"><!--pnid:dkdgdQoKz4w5BUuZaPHktF-->Prompt 工程 / RAG / 微调</strong><!--pnid:iuaWZQnN6IWMaKBdzk86kI--> 中的哪种（可组合）？请先给出<strong data-page-node-id="RcPgJcMDtd8sOOF7pCtZnL"><!--pnid:tz7TYGW4EiZ4zjXprAYIBh-->决策框架</strong><!--pnid:Dm8S3AvUEzEZDuWDaFwwzQ-->（看哪几个维度），再套用到 A/B/C。</p>
+      </div>
+    </div>
+
+    <div data-page-node-id="YXTc3uz9H4wBD387i2qEan" class="block">
+      <div data-page-node-id="3GPFgpEScMEN8jyeuIUklc" class="block-h"><!--pnid:gin2cMQusEffWxeYWz6bbJ-->你的回答（要点还原）</div>
+      <ul data-page-node-id="ulTVBM7FJksiZJDGOaGv84" class="answer-list">
+        <li data-page-node-id="9lQLvefHYGlCWmqATVmXzw"><strong data-page-node-id="yhz5tNJETYBBlpLX8jwlfp"><!--pnid:ryEUVHCbnDeACfuQproJvz-->A</strong><!--pnid:lJV2D7dZPDsTRaoD20tvNw-->：典型 RAG 场景，模型知识无法更新，RAG 必选；提示词是各环节的基础设施，无论普通问答还是 RAG 各环节都需要好提示词；微调不需要，因为文档更新快、不涉及对模型本身知识的改动。</li>
+        <li data-page-node-id="iQcZRLLigmZ4NFqPQCR8KQ"><strong data-page-node-id="nizserfwLGnjxkkLoL9lQv"><!--pnid:VNOGUNH8UcYvLylJGdghMM-->B</strong><!--pnid:6TEy34tEZnKFMwFNpgd0LK-->：合同关键信息抽取是信息抽取 / <strong data-page-node-id="OUoN2bIBGU8A9RpkDC6FBZ"><!--pnid:IadCdOenHrl0FyFHzKjWqV-->序列标注</strong><!--pnid:cvQz54NTjteSGXDOs9rQZU-->任务，肯定需要微调；RAG 不需要；提示词涉及但不是主要手段。</li>
+        <li data-page-node-id="ZFNxS8PbG5EFzCZiXznBDQ"><strong data-page-node-id="xTUG1IjRW6nJ8ZJE3eAfor"><!--pnid:cEpi7ddxGQvExVwc7CRmz0-->C</strong><!--pnid:NDrnfI2UIjKRA8fEOQqIOM-->：注释风格改写是 AI 写代码，用提示词即可，不需要微调，也不需要 RAG，因为不涉及召唤新知识。</li>
+      </ul>
+      <div data-page-node-id="5DRsxHEFMN9Z3P9V1Xfrqw" class="verbatim-note"><!--pnid:4v9rrXKDocgpOFTwxl17gg-->注意：题目明确要求「先给决策框架」，你的回答直接进入三个结论，未立框架。</div>
+    </div>
+
+    <div data-page-node-id="Vjg3DQpBhqDs827IIl2nOe" class="block">
+      <div data-page-node-id="f3E9md1OLpkCG0QtiGEAvy" class="block-h"><!--pnid:ml9eHOYIsDuCdGVi72rbH7-->面试官评价</div>
+
+      <div data-page-node-id="D4LYJWCCrRWi1A11S8aLWF" class="ev good">
+        <span data-page-node-id="1Sg4z00zM6kHbgcIng5GLM" class="lead"><!--pnid:2JlxQc5cum6Uy1FdajVnM4-->✅ 做对之处</span>
+        <ul data-page-node-id="Ar7E2Ri1LhN0py4i2oZgNm">
+          <li data-page-node-id="cqWadqCVUrPPzr2yHX3USE"><strong data-page-node-id="iXbSvy52ahWTIH1e3mZvQz"><!--pnid:dEXTAux5pKl7ZTBZDYV71Y-->A 判断准确</strong><!--pnid:3cnQWd6TyYO2JH8FDzr4kW-->：RAG 必选，理由（模型知识静态 vs 文档月更）说到本质；同时正确识别提示词是基础设施而非替代方案。</li>
+          <li data-page-node-id="c7aielEbvm6CqY9tCiZCaj"><strong data-page-node-id="7BHjXRLtpexKaINdtggqL0"><!--pnid:7thanDZhxSSr3r3Uf3yauy-->A 排除微调的理由成立</strong><!--pnid:MSrP6sST0CYF9RsMbBTl4I-->：知识高频更新与微调的静态性冲突，抓住核心矛盾。</li>
+          <li data-page-node-id="o3CbIZOjNl4RGGEIkCiwPb"><strong data-page-node-id="58MUi6GlMLy7kfeaM4CIPZ"><!--pnid:0cO8OpD3w8dGVoFOXToXyn-->C 判断合理</strong><!--pnid:RSLhJuWuzG5u40aZXqAiPZ-->：纯风格改写不需要外部知识，Prompt + few-shot 足够，避免了过度工程。</li>
+          <li data-page-node-id="WnidaSixowlIEUndOgB825"><!--pnid:iTCpEVieBgT3D6zW4vrD0U-->有基本的成本/工程直觉：不是所有场景都该上微调。</li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="dRUSXIvEEpks2GasoifYSe" class="ev warn">
+        <span data-page-node-id="y5mVJU6Cg9j4BZC3V1RX56" class="lead"><!--pnid:hb4NtOgAiKFe7SKaRvvBeN-->⚠️ 待改进</span>
+        <ul data-page-node-id="YYgUeqnqBLyfNyYBSorgMr">
+          <li data-page-node-id="G4TLMTEMDEKEDdD6HK7Qj3"><strong data-page-node-id="Evj3OmaoqS7YtaVjPHY0ol"><!--pnid:ptTdpEvWoJAmaAkWHs8Y6i-->没有给出决策框架</strong><!--pnid:ZAhvRXHg9j58qZWuCFgWAh-->——本题关键失分点。高级别应先立维度（知识时效性 / 输出空间是否封闭 / 标注数据量与质量 / 延迟与成本约束 / 可解释与可溯源要求 / 迭代频率），再逐项推导结论。</li>
+          <li data-page-node-id="TQ4yHcVad1YvkgJPSqamrl"><strong data-page-node-id="C5dnKYx1nqRiXGAF8oZw8w"><!--pnid:IAD7EePobbq3JCBkRbVGF5-->B 的判断停留在前 LLM 时代</strong><!--pnid:iVitiYNAc4TO7GqieRy8HF-->：「抽取 = 序列标注 = 必须微调」是 BERT 时代的路径。LLM 视角下的首选是 <strong data-page-node-id="xeVDH6nWcKiklOnynQCqmw"><!--pnid:TpmQb8qflP3fbCWqtxTe9j-->Prompt + 结构化输出约束（JSON Schema / function calling / constrained decoding）+ 校验重试</strong><!--pnid:FHgdmXsiViGuUUumzsXSqc-->。</li>
+          <li data-page-node-id="HPB356pzpzFviThIpW5HKh"><strong data-page-node-id="8qGa2idlzrQH3qQVAOkUh7"><!--pnid:gaXg1o48Sch3dWVfGzdw5y-->误读了 5000 条标注数据的信号</strong><!--pnid:dnTarktSCLjHAqqqG1b1cN-->：它证明的是「你<strong data-page-node-id="kmACiuJIoCIRBq8bbcUXhG"><!--pnid:cmUbWQbUBNCWqvbH9eSlkQ-->有条件</strong><!--pnid:uGi5MVDeTeKBxe7PaXgFTe-->做微调以压缩成本与延迟」，而不是「必须微调」。</li>
+          <li data-page-node-id="rZKZ5qiYkyDjNmTBuBtWYa"><strong data-page-node-id="B8UODxXZfiCZVptZd67tm9"><!--pnid:nA7ozqFPbilldYfcHQytDM-->忽略了 B 的「严格格式 + 低延迟」这两个约束</strong><!--pnid:ByaXT2LztxL7nypXvjJBfN-->，而它们恰恰是选型的决定性因素。</li>
+          <li data-page-node-id="DaWj78q7o2ZSk9GSGVvFZ7"><strong data-page-node-id="xi9IAubdj8jpOgH2TcWAD7"><!--pnid:V62qMMv5UmJjhHuhmPpVc5-->A 漏了「可溯源」的技术落点</strong><!--pnid:yAdSuf8dljumIN43P5TCQw-->：citation、chunk 元数据回传、答案与来源绑定校验——需求里明写了却未落地方案。</li>
+          <li data-page-node-id="SeyFNusU7bFs2yEWgI8vcX"><strong data-page-node-id="SCIhM0aXRvRoNesTdPNx1e"><!--pnid:j7Q0z0vmPyDP7j6PWWHH6E-->C 缺工程视角</strong><!--pnid:M77m9Ytmem5UXN1v3IFzwv-->：代码库级批量改写涉及并发调度、diff 校验、CI 集成、人工抽检，不是「提示词足矣」就结束。</li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="X8PoJMrAgoFIXtUY8FLRkw" class="ev ideal">
+        <span data-page-node-id="Hp1wiRVJdjAznRCD08NmK2" class="lead"><!--pnid:maQ7bosKXwtahUltC8N6TN-->💡 标准答案要点</span>
+        <p data-page-node-id="Nwxe7T1aSTK2YaKNT64MAb"><strong data-page-node-id="lv7CMpaPdsMR5X6MQwOTqw"><!--pnid:qN4c1fq3kLLsEWFZ6DqAjM-->决策框架（六个维度，先打分再选型）</strong></p>
+        <table data-page-node-id="yIcNNrWNqm2LfUEdLvjaJJ" class="mini-table">
+          <thead data-page-node-id="i3tP3uJDoAT7xav8owz8Yz"><tr data-page-node-id="MZzt6IhwxsbaZy3d2rY3GB"><th data-page-node-id="OPveCA9epuj2ywMqyvL1tH" style="width:150px"><!--pnid:PhOVxeuYdRdevRU2Q8QMRD-->维度</th><th data-page-node-id="J8xcWYyOjzMw3jO0hRE1iA"><!--pnid:PA49jeR7lJPjrHPPbACtWW-->关键问题</th><th data-page-node-id="SMBC4MB2JSOaBWJyFxjjXR" style="width:130px"><!--pnid:TR9rRqA6ztxw7b7NAGVaWK-->指向的方案</th></tr></thead>
+          <tbody data-page-node-id="hqPq0KLTseJbObYsPSBpAc">
+            <tr data-page-node-id="Z92GPNFFcBW27Wgc6ECJY4"><td data-page-node-id="6HgZ8Za7WoWBW1AbWFCHyQ"><!--pnid:B85TkdIzxxzdMFMbXlNTwO-->知识是否外部且高频变化</td><td data-page-node-id="hW6FM5jU4C3rP4wUji4Rfo"><!--pnid:1Qdhrvq05DeNikKTPz8sF4-->答案依赖私有/实时数据吗？</td><td data-page-node-id="ANRwp4W2fn1Pf2pxN9sOBh"><!--pnid:S3tuCbB0HyHTn9bzDpwBgh-->是 → RAG 必选</td></tr>
+            <tr data-page-node-id="eHVrtR1K7KvuUPKW0l1lmY"><td data-page-node-id="Q1cLOF3SwzgZfKInxfUHKe"><!--pnid:jB1t2l9xcNUwr6HaTP1D7c-->输出空间是否封闭</td><td data-page-node-id="1pYKLnaY0wVJAxBmjNTsR0"><!--pnid:YEnEObxPTzvv9NOtDIY1DH-->答案是否可枚举/有固定 schema？</td><td data-page-node-id="62YZ7veM7i9X7lmsLE3poy"><!--pnid:vAj8YSteQ9bE7IGMme8bio-->封闭 → 强约束、可微调</td></tr>
+            <tr data-page-node-id="zOHksGYVk3QPH7QFrsoULC"><td data-page-node-id="deMvYjBOKe9j3FmPscJ22W"><!--pnid:FfS2JTxCumaQFWBdEvgfQe-->标注数据量与质量</td><td data-page-node-id="1DZYseJLdRJfkI7Tzl730u"><!--pnid:pZj0DuiX7wjVKzSvX35tH2-->是否有上千条高质量 pair？</td><td data-page-node-id="yqFQ6KsZaxRkr67nZWHxkU"><!--pnid:fDXKMobQnJj3qRKhEc6G9s-->有 → 微调成为可选项</td></tr>
+            <tr data-page-node-id="FXYq4KX8rt9PyZpb2bA9PK"><td data-page-node-id="vmLVyTBpiuqSG3pkkgmnmh"><!--pnid:lm8ENgh1VlSc3pglonYwaU-->延迟与成本约束</td><td data-page-node-id="A7Dd5PaRQSLem9vKWfa38b"><!--pnid:vTEaE2rLIJUL77eYkX36Bj-->QPS、P95、单次可接受成本？</td><td data-page-node-id="zgMPEVfvWjcEEd2KNbagBS"><!--pnid:POzuFNxAOn7fj2AvxGpunr-->严格 → 小模型微调</td></tr>
+            <tr data-page-node-id="R9bGs76ox1LnyTB5r4Lj42"><td data-page-node-id="ZyY68hgoes9hnZcmXlx3qg"><!--pnid:LESkRLWheRlZ0E5aN4hwPB-->可解释与可溯源</td><td data-page-node-id="waME7KASzTVOPiGzqPLyzH"><!--pnid:F5RF5gTOeMLaeTUkRT7uJ9-->是否要给出处、要审计？</td><td data-page-node-id="0psBgwShXhrcOYHtV26KiL"><!--pnid:VKH7vrDJgmZQ4FZi7RvGWq-->要 → RAG + citation</td></tr>
+            <tr data-page-node-id="gae1aGHeaPDuinzhrOw7b9"><td data-page-node-id="I4UU7NBuwBGEw27Kka4ljl"><!--pnid:9GQ8MfsEWN9Xq9o0LgaqSW-->迭代频率</td><td data-page-node-id="qybrztSzm4xQUTsm6mGmgt"><!--pnid:2kV4NbtuzRN8RrHMY515Gq-->知识与规则多久变一次？</td><td data-page-node-id="dXJs7QF0WHjIG5aO7Mep2F"><!--pnid:wsVofPStbPHb6Lu5WClEjx-->高频 → 避免微调</td></tr>
+          </tbody>
+        </table>
+        <p data-page-node-id="OFjk2a3vSE5voZN4P5122K"><strong data-page-node-id="LUjUrHNDcAs9Boj5GFpvbb"><!--pnid:51POHsoQjvsRi923zewkED-->应用到 A / B / C</strong></p>
+        <table data-page-node-id="LOPJ9xo0xmzgwIaFwqlWlh" class="mini-table">
+          <thead data-page-node-id="xxfAS5wrfi8A13bktccD7j"><tr data-page-node-id="H0HEeBBvvse50Ojv8mbH0w"><th data-page-node-id="UizdWAqxWkApskcHYZv9KG" style="width:70px"><!--pnid:on97gIuNztXM3IdhENcrZV-->需求</th><th data-page-node-id="BMLxR6QZZfQYfbunHsRwGm"><!--pnid:SyrsdGRbbhqcUDOJRaMabD-->判定</th><th data-page-node-id="v09FFZ8c9m0R71n5xppKZW"><!--pnid:lbr1FlhFG7kBG5G8YUiwaQ-->方案组合</th></tr></thead>
+          <tbody data-page-node-id="iOYj93dxhsBGmVXFoSd6Tc">
+            <tr data-page-node-id="q9z59rk4RZVG0BWxCtXJGh">
+              <td data-page-node-id="VAqHT4O3miOa96wlJUjNMp"><strong data-page-node-id="GwiOGM95MkQVGFFGgse0vh"><!--pnid:YOo8nmilG74UkQepPU4UNg-->A</strong></td>
+              <td data-page-node-id="sBh9jgPNxbLEZ5IxuV5TSu"><!--pnid:Vd3RCRBHtBPtQWHkPQeKiD-->知识外部 + 月更 + 需溯源 → 不微调，RAG 为核心</td>
+              <td data-page-node-id="eoogjgueGddAPvuXWdWepQ"><!--pnid:m7KFl0Q5b11SnWcdNYsNIP-->混合检索 + Rerank + 查询重写；生成强制 citation（答案句绑 chunk ID）；prompt 版本化；评估集覆盖「知识库无答案 → 应拒答」</td>
+            </tr>
+            <tr data-page-node-id="IspvAyGGMQpxmnBhsv0sLF">
+              <td data-page-node-id="8iar7zEXpLK2w9mgaqb3H3"><strong data-page-node-id="ZNcyM5oPKNx0qGfvMq6atQ"><!--pnid:hOoSc1N4uFFL1aKTic8zxz-->B</strong></td>
+              <td data-page-node-id="0e6ddNp1crWbsRbbjhRHi6"><!--pnid:U37B3WjUjf3p1OkiLBpYXJ-->输出封闭 + 有 5k 标注 + 低延迟 → 小模型微调 + 强约束</td>
+              <td data-page-node-id="iSX3qnE7gLZP96T6C1JpGT"><!--pnid:tHU0I8pzEed2N4W0ZTQ3At-->先做 baseline：大模型 + JSON Schema + function calling 测准确率与 P95；若不达标 → 用 5k 数据微调 7B/小模型（LoRA）；输出 schema 校验 + 失败重试 + 低置信转人工；结构化解析层做金额/日期归一化</td>
+            </tr>
+            <tr data-page-node-id="M4W1v3Iebu0chZSY50Q0oq">
+              <td data-page-node-id="I1OEQqNLuL7MRrHaO0EvLS"><strong data-page-node-id="ODlws9RQZByRurOqUm8uGv"><!--pnid:65lHmp0VKXm4cbnDdgPsXN-->C</strong></td>
+              <td data-page-node-id="IHe4B5PJPky8auqP2YMMO3"><!--pnid:os2tnwaq0QwjJh5xfcNxRl-->规则固定 + 无外部知识 + 离线批量 → Prompt 为主</td>
+              <td data-page-node-id="sGvaFYAa04cbI7oZKs5guR"><!--pnid:1dGP99J5yNCwPm5PLgZ5ss-->风格规范写成 rubric + 3–5 个 few-shot 样例；批量管道（并发 + 限流）；产出 diff 供人工抽检；CI 集成做门禁；对风格一致性用 LLM-as-Judge 打分抽检</td>
+            </tr>
+          </tbody>
+        </table>
+        <div data-page-node-id="U1SYWkoJI2ycSNSjOJBDLK" class="kv-note"><strong data-page-node-id="N2gU57RWBsB30gwYJbDPpu"><!--pnid:zX35Aj5ybZpjoULTCWXHSE-->核心原则</strong><!--pnid:nA1nbrevDQz1vQIczec7QZ-->：Prompt → RAG → 微调，是<strong data-page-node-id="0ZsGz7BPvFHn2Ar10LSAUM"><!--pnid:lWDbO0bVZRqAwW40EEy0gL-->成本递增</strong><!--pnid:UZoeRm6hH2RBPIEGtdvIQ4-->的顺序。永远从最便宜的一档开始，用数据证明不够，再往上升级。微调解决的是「稳定性/延迟/成本」，不是「知识」。</div>
+      </div>
+
+      <div data-page-node-id="hvxkgkMmHQNkbjD4cQEfXO" class="ev score">
+        <span data-page-node-id="DCLgpq21UsBQ2PpTyZoHZt" class="lead"><!--pnid:KKcBMaiJ0o7iHfsejO6XUo-->📊 评分：6.0 / 10</span>
+        <p data-page-node-id="3TD7H8fTYAkKkfCje2C88I"><!--pnid:OCc4hRIIajdhyUAk2eskUI-->A、C 判断正确（7 分水平）；B 方向不算错但论证方式暴露技术栈认知滞后；决策框架缺失、约束条件未被使用。综合 <strong data-page-node-id="2yebeeHc8rx4pxQWaDVubC"><!--pnid:dZipIcieoaIQbzaKFudZqu-->6.0</strong><!--pnid:G7w7GHxCEbc7Ju4Lws8sYg-->——合格但偏初级，离高级岗位期待的「系统性选型能力」有明显差距。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--pnid:nlNmWAusSNYvYudW4odOuR--><!-- ============ Q3 ============ -->
+<div data-page-node-id="Y5rjUdQr6ZjIWeXV17rNZ5" class="q">
+  <div data-page-node-id="BjKLhvBXNR01QZuc1EMLkN" class="q-head">
+    <div data-page-node-id="AAmeMNOgnQ2CKTaLkVxl2Z" class="q-no"><!--pnid:ZnvPw56aTy6rTHrhIiseOD-->3</div>
+    <div data-page-node-id="AwLyWTs5RVLXYzjhhvPXYU" class="q-title"><!--pnid:QRGZutuiJH9ydfhKB55tqd-->客服工具调用 Agent：控制循环、资金风险防护、成本优化</div>
+    <div data-page-node-id="LcaYjMZwkGvlgT62a31pMd" class="q-tag"><!--pnid:u1Y0E5CYpOqbDfoQW61Kgz-->Agent 工程</div>
+    <div data-page-node-id="OqMWddYK5vGwYVMH0HaHy0" class="q-score mid"><!--pnid:JhxFq07jmwoDjTf2nm9hSh-->6.5</div>
+  </div>
+  <div data-page-node-id="lOqyn8Hn6ArWxOaNlWvVSM" class="q-body">
+
+    <div data-page-node-id="JWkgMK2oLbUWBCqze7orEA" class="block">
+      <div data-page-node-id="gbkJ8lGnY0nFiLdQzvuGM0" class="block-h"><!--pnid:8Jnb8eL0xgSRKwBg6NiX3K-->题目原文</div>
+      <div data-page-node-id="cPaHVk2y8RcZr2wCVdseY9" class="prompt-text">
+        <p data-page-node-id="NoIaygzMzrvRomuatz1Rje"><!--pnid:HXRzWgGtywwleOUhRq0zbf-->给客服系统加一个工具调用 Agent，完成「查订单 → 判断退款政策 → 发起退款 → 回复用户」的多步任务。工具：<code data-page-node-id="QfQ3xYhM2DTNQeBXHIehrc" data-pnid-children="XmxNqUwoRmEO2elXHeDm0m">query_order</code><!--pnid:mpf6RVBzR1HXTFRtQpI2Hy-->、<code data-page-node-id="uYLRrqdj8YpW7H6okKb7dM" data-pnid-children="FijU3uvsLyFFQAItwBhQaI">get_refund_policy</code><!--pnid:uOg6t49lXfDzypeTENQROM-->、<code data-page-node-id="w2FqC5UkipkGbeMLE2Kni1" data-pnid-children="9PUuSfBi5SxNOK3m2J9Lnv">create_refund</code><!--pnid:X1rpfZkggHH6ocSCTj8VjB-->、<code data-page-node-id="JA2mZSSJGxot8SpyHq08z3" data-pnid-children="7P2pgBdam2DFcZxWrKR9bp">send_message</code><!--pnid:04c0jipQkMZYAs798gmPog-->。</p>
+        <ol data-page-node-id="uKS4wQo9Q918uedLEZ9HnC">
+          <li data-page-node-id="Yxet1ItGHZkJXqrzTeSBDS"><!--pnid:b1nZwOfXid83MaSVlq0Uuf-->如何设计 Agent 控制循环（规划、工具选择、结果回灌、终止条件）？如何约束它不跑偏？</li>
+          <li data-page-node-id="DDwjKoTmfeA2ZkTwme7swF"><code data-page-node-id="fjUM7QZIxPesM6yJKzMlXU" data-pnid-children="Y2hB0p1GlVl33qnF3nuRMy">create_refund</code><!--pnid:H8weeZ3xtknCbsBiq87cqq--> 是写操作、有资金风险，加哪些防护？</li>
+          <li data-page-node-id="ksCO7IrirAEYAzQRmmXgAj"><!--pnid:Jc0IxTFunwfE1DCfSlwwvK-->上线后平均 6–8 轮工具调用，延迟高、成本高，如何优化？</li>
+        </ol>
+      </div>
+    </div>
+
+    <div data-page-node-id="5jZGXbriyNd1W0zaCsSaz3" class="block">
+      <div data-page-node-id="yfcpgOuxaS3o4LqWXU8fkl" class="block-h"><!--pnid:o2QJy23poOTHZvsYSINeUj-->你的回答（要点还原）</div>
+      <ul data-page-node-id="JgPdXzhkh0CDyD8Byo70H3" class="answer-list">
+        <li data-page-node-id="7L9PgUQSiQfWW804E5baxs"><strong data-page-node-id="jymUZbmDcRtrnvQmxUBe9E"><!--pnid:mpRSuoXSLqEyFUcZpkFRL1-->控制循环</strong><!--pnid:Gvz1YA7smx2jv9ZEDE2jSb-->：场景不复杂、步骤明确，用 <strong data-page-node-id="Z7qTtZcYK6LEOXaZ2FtZNl"><!--pnid:wfGCRaRoGNVzfOD2doVVPn-->ReAct</strong><!--pnid:vo0BgDYl8KGm6WQHnYCcwT--> 即可，不需要 Plan-and-Execute。假定已由前置意图识别路由到退款 Agent。</li>
+        <li data-page-node-id="7Y5Ms0WyeHc0NicQbKTOPf"><strong data-page-node-id="66NlOmvlTK01keEnPx1bbH"><!--pnid:rp6sZbqRqvnmZxwxejXvmg-->关键判断</strong><!--pnid:6OnBMNDHD7b2LjdVxPRhBq-->：<code data-page-node-id="VfpF0c80ULib894Pfs3Tfv" data-pnid-children="rx10nWjZJfZ31qhz8rUT5c">query_order</code><!--pnid:GtmnEaBF26r0Wl2N6CqwCC--> 和 <code data-page-node-id="yaUskWJrKV5weMgDK9YGba" data-pnid-children="qnRtGqHk2mVH995DeSYvYM">get_refund_policy</code><!--pnid:Z3wyaHFK9CKIxyWVdvqrvA--> 其实没必要让 Agent 自己决定调不调——任何用户进来都要查订单、判条件，应该由代码直接调用取数，Agent 只需根据结果回复。</li>
+        <li data-page-node-id="czTpbTExnrV9bSey5XDtGv"><!--pnid:sIW6hhnfqFvsFPFZ8seJ9A-->回复/追问环节要对 <code data-page-node-id="G7NURbKK1PH0JcZcImK0fI" data-pnid-children="DefcpWwMB8fCDh4BzTr9t5">send_message</code><!--pnid:58hbhx6c6HfUW98QhfUK2O--> 加约束，避免发散；判定为否决则直接结束，判定要退款则加<strong data-page-node-id="3qTZjLmeJxneGxGZnatZra"><!--pnid:o6F2tD5wEDrqX2ybJLs26r-->置信度判断</strong><!--pnid:4yERftpBUFtWAYF12RHL0S-->，达标才允许调 <code data-page-node-id="QMLbVCDTant0Ol91rvLeor" data-pnid-children="tTF2ZGoEFQnTtcIzc1ugJf">create_refund</code><!--pnid:KaDCBN1Ojj2oRPgdB1IuCW-->；工具内部再做最小权限与信息核查。</li>
+        <li data-page-node-id="vOf7NeOjQBibypq5pn41z8"><strong data-page-node-id="LYel4nkmV8iwfnOHSdXtj5"><!--pnid:Bg1IV4ZzCPxZRpHNBaq4dV-->写操作防护</strong><!--pnid:TID2JOfeAKrchjApqGZaK9-->：不允许 Agent 独立完成，即使置信度高也要走审查流；置信度低的走人工；超金额订单强制人工审核；AI 可做二次审查。</li>
+        <li data-page-node-id="UkbMS30Qufj2zzcWGXQFrL"><strong data-page-node-id="UYzpN81n8uObYQT9XERRu2"><!--pnid:Q7WyEMhBEundXFUXjHandQ-->成本优化</strong><!--pnid:ZcYObt1H0YLDHIB7gQfmNi-->：调用多说明模型能力有问题或乱调工具，可针对当前工具和场景做<strong data-page-node-id="5efAiV2FG2og2cAhYBAQMh"><!--pnid:wB6JYTkzNWUxOmrYacanB2-->垂直微调</strong><!--pnid:XwevatWu55e44R5HCd6W5T-->；长期看垂直场景微调后效果可能优于大模型，采用「微调 + 大模型兜底」。</li>
+      </ul>
+    </div>
+
+    <div data-page-node-id="LjoV096g1iTtfjltzZCI7Z" class="block">
+      <div data-page-node-id="Lq7zYdZq1pynDLgQaKhce5" class="block-h"><!--pnid:gHd2Vk2bA3C8siQZFn0S7f-->面试官评价</div>
+
+      <div data-page-node-id="bK3UONz4KZPeQfAs46Myrc" class="ev good">
+        <span data-page-node-id="3TtZqY01PZueLCgp3KGCBb" class="lead"><!--pnid:DRcVECVgqYHNR9hyTWjIVv-->✅ 做对之处</span>
+        <ul data-page-node-id="PZ3G0dZ5OeFONwjx1rxP64">
+          <li data-page-node-id="wpASVn8fmmv8gVrHAbiF1o"><strong data-page-node-id="6S3TV1e9f3ALCf6WnSVjfn"><!--pnid:mKw9REy4feYCCfhh5tGewf-->第一问最有价值的判断</strong><!--pnid:H0reg5nZC51gSYpLlKJuO9-->：识别出查订单/查政策是<strong data-page-node-id="puhYNWBXwQF67LtPdztsYn"><!--pnid:gBXBCs8sBGtD2fM6CJNibj-->确定性步骤</strong><!--pnid:UvOU9vwcqNQmW0Df8aDmm0-->，应由代码预取而非交给模型决策——这是「workflow 而非 agent」的正确直觉，很多候选人想不到。</li>
+          <li data-page-node-id="QQ0ga7bSPAKb57VDnUE1Pj"><strong data-page-node-id="llWyextzRcJjnhU7nV9TNE"><!--pnid:N2CeXJDP60q8gPnicCQSkA-->ReAct vs Plan-and-Execute 取舍站得住</strong><!--pnid:3kV6EgbFIYFw2J2tDCIw97-->：步骤明确、路径短，不需要重型规划器。</li>
+          <li data-page-node-id="8LzfsglINxvzPQeGnTflW9"><strong data-page-node-id="8Gh7dL5g0VCqKhZvCZDoBC"><!--pnid:PHdWcbbg6DgKd0yJRuYgHI-->写操作防护有层次</strong><!--pnid:ZBwBs8SxsgQ5AXtfTsHpwe-->：置信度门控 → 最小权限 → 金额阈值 → 人工复核 → AI 二次审查，方向都对。</li>
+          <li data-page-node-id="y44NS45DUsDIIDEpvMKxgZ"><!--pnid:hT4KrsX0rVPQREOLiw664W-->意识到 <code data-page-node-id="jLNY0Vyqppd96c7jcGc95K" data-pnid-children="Tyg2Td0PLrUlqSsoaKBESj">send_message</code><!--pnid:kH9kXJ26hmSZmogbEP4BgM--> 是对话出口，需要约束其发散。</li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="xEeyb0uLIkumj7RKnLZ50J" class="ev warn">
+        <span data-page-node-id="cXjuiEq0Q0x3PEjKsUZmaT" class="lead"><!--pnid:YBwDX7H3X11SuIj0DUnxO1-->⚠️ 待改进</span>
+        <ul data-page-node-id="IJYlOPJPJBvaluePpcUWwu">
+          <li data-page-node-id="6TF17ZNEHXPCAykY6EBXmm"><strong data-page-node-id="mU91ICVRE2lGFX4DXFkwB0"><!--pnid:VOeCegKewsQB8hX4BU0Ynv-->第一问缺关键控制点</strong><!--pnid:CT6Ezs6mVYAIMm3kAF9xOY-->：未提<strong data-page-node-id="l5mVHKjcBsHdotw25tPnhY"><!--pnid:SglzEJo74tSqsYiuPqqwz0-->终止条件</strong><!--pnid:y4KxdAPitAMZp9llEwdN7n-->（max_steps、超时、循环检测）、<strong data-page-node-id="fwZAXO5crJlZKyaSgE4Jtt"><!--pnid:BtFOScnjH2UTNtsD0uhYqh-->工具结果回灌裁剪</strong><!--pnid:kZAnb0BnV6X3YCacTFeMzp-->（大 JSON 直接塞回上下文会爆 token）、<strong data-page-node-id="K0kVmWAt1zhC5WvYWIbjlO"><!--pnid:HMZGdv2wcxWJPnsucVpJpL-->失败重试与降级</strong><!--pnid:HQDMwq1Ipxpgg17KN10gNk-->（工具报错时给模型什么反馈）。「约束它不跑偏」问的正是这些。</li>
+          <li data-page-node-id="QpcusWl8swBz4W84F6cJy5"><strong data-page-node-id="n5DUsIcfBcyupe0B2rgrdW"><!--pnid:IzbLBdckDzXqEsIjiDntx3-->写操作漏了最核心的几条</strong><!--pnid:Pn9Xtp5m2Nnmrt8qxM3ujL-->：
+            <ul data-page-node-id="xSbWnxIxx9eIW4Ex9pZIcP">
+              <li data-page-node-id="cVHmIa071C3NmDs304wLnK"><strong data-page-node-id="iMl9jqeMNgbCdxmj1RAkLW"><!--pnid:6kksa5n3jQfL8cEndyzRXX-->幂等性（idempotency key）</strong><!--pnid:cdqJDiXeNs3jDejzq7NwIW-->——模型重试或循环会导致重复退款，资金场景第一大坑；</li>
+              <li data-page-node-id="kTDI9fMQWjxSH8jSPxpb2S"><strong data-page-node-id="fz78lIoyyAYm94RgK1RhHX"><!--pnid:qeMYECSNoPjr8vqJMx3MKO-->两阶段提交 / dry-run</strong><!--pnid:W1xeiii1M1rJnmAzHqZfxW-->：先「预演退款」返回「将退 ¥X 到 Y 账户」，用户确认后再执行；</li>
+              <li data-page-node-id="ewSZpUnGCjCnQyumptgGUm"><strong data-page-node-id="760ct5CAENL2Lb12y1JtPo"><!--pnid:7QMHhrvxZapwhVaIhbhEJA-->审计日志 + 可回滚</strong><!--pnid:E66dLHPr15sHoCTTs270ar-->：每笔写操作留 trace（触发者、模型决策依据、参数），支持冲正；</li>
+              <li data-page-node-id="UVOn8hpiWl3Gs2ovFaJrcw"><strong data-page-node-id="MTcHODfRxd4pFaA2TsuMe1"><!--pnid:p1co8jCmcoTffwUurRU1cp-->速率与额度限制</strong><!--pnid:FcQMLflWcEiSccd7kPzeUv-->：同一用户/同一 Agent 单位时间退款次数上限，防 prompt injection 刷单；</li>
+              <li data-page-node-id="M5gLEL626mPK6lVPm0eANw"><strong data-page-node-id="RZyKR5OEW6Fk6e6CmunBI3"><!--pnid:B86xLxXT6F1tCtSwegNz5V-->用户显式确认</strong><!--pnid:Q4dCy9ILDSQM4uiIQR2Hei-->：涉及资金的最后一步应由用户点击，而非 Agent 自主执行。</li>
+            </ul>
+          </li>
+          <li data-page-node-id="Jj08V3Q0PxdSmsqCVYxbnU"><strong data-page-node-id="b4OPIUHSNU3XqqEB45xMEe"><!--pnid:emou85vKLTm6uXiNcQqkar-->第三问是最大失分点，有两个问题</strong><!--pnid:mxpVJxryt3gYJ6Ctf1rEUn-->：
+            <ul data-page-node-id="td25POKT2JNs3uqXiuinK5">
+              <li data-page-node-id="8HdDsCDQkjFAxE5Md5lTXb"><strong data-page-node-id="QriWbGROuRT8F0n44i9HCA"><!--pnid:QYMikHuvwgdr5qf6L4Spgq-->跳过诊断直接开药</strong><!--pnid:LUpFfiBQKLkeK2xwsoMRye-->。正确第一反应是拆 trace：6–8 轮里哪几轮必要、哪几轮重复、哪几轮是解析失败重试、每步 token 多少。没有度量就优化。</li>
+              <li data-page-node-id="kdo7USPlWS9ntvTejEnMVo"><strong data-page-node-id="EbxnKCoMrYcOTuudk37TIu"><!--pnid:9H1HoftDzFQdPVcO3HIvnO-->归因错误</strong><!--pnid:S4ivamRXOiJErAJLXuvZD8-->：「调用多说明模型能力有问题」——多数情况是<strong data-page-node-id="Ms3sEhyXweo3KbF3R4W8HX"><!--pnid:yeuTRvL97iLOKdm92ni5yh-->工具设计/循环设计</strong><!--pnid:4JTiHoM3aRh2HKwplmmEE8-->的问题。而且你第一问自己已给出最优解（订单与政策由代码预取，直接砍 2 轮），前后自相矛盾，面试官一定会抓。</li>
+              <li data-page-node-id="KejglZtEwdj59maWMEbAtN"><!--pnid:KfRiF1KnOlQVKJNZrc8M8s-->漏掉整排低成本高收益手段：并行调用、静态政策缓存、精简工具返回字段、Prompt/KV 缓存、结构化输出避免解析重试、简单意图走小模型、把自由循环改成<strong data-page-node-id="qgNvKorV0RYCdBzo8qkFrE"><!--pnid:9FIW2IkFebsTx2qx1ufxxD-->状态机</strong><!--pnid:OYib5b08YxghY48FFCZVvP-->。</li>
+              <li data-page-node-id="FoshmYbBbGSseWvy72OMSu"><strong data-page-node-id="074wwfEsSL1sI1V1XZEwke"><!--pnid:QrPOk375UMpBmy3jbkJsax-->微调放在第一顺位不合理</strong><!--pnid:9Poentd0RLXH9ODxQVWfuE-->：它最贵、最慢、最难维护，应在其他手段榨干后仍有收益才做。「微调 + 大模型兜底」方向没错，但顺序错了。</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="b6TkeMeLEP1kwbYO7L4zGf" class="ev ideal">
+        <span data-page-node-id="xH7cCKqBWIIHWPa2pf17o9" class="lead"><!--pnid:4ZdNFhqCo3Ief33n90O7Gf-->💡 标准答案要点</span>
+        <p data-page-node-id="vg7Jp1eVhkxkxPe3mYTRRB"><strong data-page-node-id="CPRcT4dwjzIcqdIxzmenk3"><!--pnid:5luczvO3gg9WgGhehaecV7-->1. 控制循环设计</strong></p>
+        <ul data-page-node-id="AG9yFNo3syyzRMJOTuhLgn">
+          <li data-page-node-id="4evX4fYVhWbZt85VCd1gX8"><strong data-page-node-id="sH8XKpwLHKLU0IxuTxmaif"><!--pnid:JtUdfVPTJF51gLIbZf1RRM-->先做形态判断</strong><!--pnid:vRgqJngCCoJbXBN8TTrx6L-->：路径确定 → 用<strong data-page-node-id="lsPlmXb6vFCHpzpk1f1riH"><!--pnid:4jqQLZBiD1X7eUKeYbvirc-->状态机/工作流</strong><!--pnid:ferNMI4glXR73u63JWUgLK-->（确定性最强、延迟最低、可测试）；路径不确定 → 才用 ReAct。本例其实 90% 可固化成状态机。</li>
+          <li data-page-node-id="Tdur24IXWslOABFxq9t3rB"><strong data-page-node-id="jR40UeaG3qCR2wgnNrd5wl"><!--pnid:waazjZTZmtauFBw09yLpeV-->工具设计</strong><!--pnid:DcyMyM790YJ06xphPQOCWh-->：描述写清「何时用/不何时用/参数含义」；参数用 schema 强约束；工具粒度适中（过细导致轮次膨胀，过粗导致失控）；返回值做裁剪——只回必要字段 + 摘要，大结果落存储、上下文里放引用。</li>
+          <li data-page-node-id="CTnug50OFuQED4zHawztlp"><strong data-page-node-id="6wdf6ftbLQ6qdfTzjzApeN"><!--pnid:ikudTDmdJbPldaDkbCnx4o-->结果回灌</strong><!--pnid:7MIpDBNv1cone4cKQDiZ12-->：结构化回灌（成功/失败/关键字段），错误码归一化，让模型能区分「可重试」「需换策略」「需转人工」。</li>
+          <li data-page-node-id="mPUR87GLIMnMsmCEi2CdqN"><strong data-page-node-id="TJ0DxLw7PsSxiJVTOd08Dr"><!--pnid:2yDx5DlppTLMRMGXMv5D6i-->终止条件</strong><!--pnid:cEcAqqDKqgRMqXFjgM1PrP-->：max_steps（如 6）、单步超时 + 总超时预算、循环检测（相同工具+相同参数重复调用即中断）、置信度低于阈值 → 转人工。</li>
+          <li data-page-node-id="dWpt1OeRbYTmGS9VsxXM4U"><strong data-page-node-id="EmaQVP1kwCyN7cjz3wAiEQ"><!--pnid:uvjVuRpI3kMu2DaE5O17zb-->防跑偏</strong><!--pnid:7KSvmGKNAtFpPVcYgCJbtd-->：系统提示固化角色与禁止项；每步做参数校验；关键节点插入规则校验器（guardrail）；敏感工具白名单化。</li>
+        </ul>
+        <p data-page-node-id="vkm1WOpmwPMNxRmiC3yftv"><strong data-page-node-id="SX54FSRoiIqeKSP0a0bY5O"><!--pnid:OZnOm1Obf8U9d7hmCtMOPL-->2. 写操作防护（资金场景六件套）</strong></p>
+        <pre data-page-node-id="nehEQw98NvA3yl8HfEkvXa"><code data-page-node-id="7ef8b7lRj0sUAIevlgMKFO" data-pnid-children="WD1wsFQdJgKvqcL2GaKjG6">① 幂等键    idempotency_key = hash(order_id + refund_intent_id)
+             重复调用返回同一结果，不产生第二笔退款
+② 两阶段    preview_refund → 用户确认 → commit_refund
+③ 权限最小  Agent 只能调 refund_limited（额度内），超额走人工通道
+④ 限额限速  单用户/日 & 单 Agent/小时 双维度；异常速率触发熔断
+⑤ 审计留痕  每笔写操作记录 trace_id、决策依据、参数快照，支持冲正
+⑥ 人工兜底  金额 > 阈值、地址异常、历史风控标记 → 强制人工</code></pre>
+        <p data-page-node-id="diguBwF1Kt7afn1XUvSdzw"><strong data-page-node-id="23sznFyzeqRLdFJv8O9NNJ"><!--pnid:K6eoMc9GBHWx69URR9bHgE-->3. 成本与延迟优化（七步，按顺序做）</strong></p>
+        <pre data-page-node-id="ULKznN6toB6DFF5SPAoUZH"><code data-page-node-id="2ss8yJjsLgkFcVRwhlbBca" data-pnid-children="BjaeRosgIXImYflWFxJ4ab">① 先度量   拉 trace，拆每步 latency / token / 是否重试 / 失败原因
+② 砍步骤   确定性步骤代码预取（订单、政策）→ 状态机替代自由循环
+③ 提并行   无依赖的工具并发调用（如查订单 + 查政策同时发）
+④ 减 token  工具返回只留必要字段；中间结果摘要化；历史轮次压缩
+⑤ 加缓存   政策类静态数据缓存（TTL 长）；同用户短期重复查询缓存
+⑥ 降级路由 简单意图走小模型/规则；复杂才上大模型
+⑦ 最后微调 垂直场景小模型，大模型兜底</code></pre>
+      </div>
+
+      <div data-page-node-id="fR0wz7M3VKPpUGVK82xv6r" class="ev score">
+        <span data-page-node-id="ZEpYhwu9xbt6a4vvZKXKzi" class="lead"><!--pnid:31b9qlWUi2Qzv90LPVqJuZ-->📊 评分：6.5 / 10</span>
+        <p data-page-node-id="kkUwZfewuMyjNbuZLB7cYG"><!--pnid:tczPqjV6iKqLi823NbLZwj-->Q1 <strong data-page-node-id="LVv8vl2aY9ewFisMccHYRp"><!--pnid:LmdZJzjYN0VknnW2752O0Y-->7.5</strong><!--pnid:O9dqLdevKNNTov7MNgflQ3-->（确定性步骤的洞察很好，控制点不全）；Q2 <strong data-page-node-id="yYmiMh89JglEoE4evV20We"><!--pnid:GOtw26MnIMjuO0Saaqpuq5-->7.0</strong><!--pnid:dwyPbOvdsIu25Vo08zAw2p-->（防护意识有，缺幂等与审计两个硬要求）；Q3 <strong data-page-node-id="yoRk9XIcXDKQ7rdnyiyK2T"><!--pnid:c43ny7a8YTp9tVcPxBtgPH-->4.5</strong><!--pnid:DPYwgNRpeXnhYXmVrlacjn-->（单一解法 + 归因偏差 + 与 Q1 自相矛盾）。综合 <strong data-page-node-id="wddRI662GWGkKPMMDPkhT3"><!--pnid:JdxZPXaC8eCuFTOatDEo79-->6.5</strong><!--pnid:Mv7WDzarJkm3PJhEdavimu-->。</p>
+        <p data-page-node-id="4M6UvAiyBphyNw2F7KuwPi"><strong data-page-node-id="lkmKUITCLfeTVGMaF5eh9D"><!--pnid:zAtLG9UDcpgr3STIpV0gse-->一句话总结</strong><!--pnid:bO8B3EqUHPFze8DTUc2Pyx-->：架构直觉不错，但工程严谨度不够。高级岗位的差距往往不在「知不知道有这招」，而在「遇到问题先度量再动手，且方案能自洽」。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--pnid:N0tFwEocpAQsyGBjvDT8wk--><!-- ============ Q4 ============ -->
+<div data-page-node-id="gf3f4w8C9sqN74XVo5I3dM" class="q">
+  <div data-page-node-id="yWIq8eO4A6VHpxABUkwEby" class="q-head">
+    <div data-page-node-id="5RszQ8YuBiDWteitSbo18v" class="q-no"><!--pnid:ZX2a39AGOXTzNetsk2hjpS-->4</div>
+    <div data-page-node-id="UWiAEfTtTpJbe2YsrqWCi6" class="q-title"><!--pnid:PAmZNQHUopJqQlq2zgpa8N-->系统设计：统一 LLM 网关的多模型路由、成本治理与可观测性</div>
+    <div data-page-node-id="rGg8Yo8MWhtF0xZuj1PvfG" class="q-tag"><!--pnid:91FP9GavCn8gCk5OAj5qSm-->系统设计</div>
+    <div data-page-node-id="eXyECaIIwzHO35HGbLzGqu" class="q-score mid"><!--pnid:epdkGd8W8TUMQh1BEdKJGt-->6.5</div>
+  </div>
+  <div data-page-node-id="mCnNvo5MNTRyyuBos4P8R0" class="q-body">
+
+    <div data-page-node-id="mOABcnX6EmZPzCeiICbCv1" class="block">
+      <div data-page-node-id="NP2NU7YkrKQkK23zQINkIF" class="block-h"><!--pnid:MjUFnGYnRwCr91RizqIM3l-->题目原文</div>
+      <div data-page-node-id="j3YirZPBFEKjSavM4vsl1B" class="prompt-text">
+        <p data-page-node-id="os8tCxfg3Jds05wN2l0jDM"><!--pnid:TQbQfmd3WvdEDLATowV6sS-->公司内 20+ 业务线各自接大模型：有人直连 OpenAI，有人用国产模型，各自管 key、各自写重试，账单月底对不上，出故障没人知道哪家模型挂了。请设计统一 LLM 网关：</p>
+        <ol data-page-node-id="5MrUn1WGkQk8yQb2NpQVt0">
+          <li data-page-node-id="Q1lqEQ7K8ksQv51qD7Kvhy"><!--pnid:BJYlAXMz8rINn6TMZx3qJp-->整体架构与核心模块（请求链路怎么走）；</li>
+          <li data-page-node-id="VUII4KQPcjqC3PGm2Mc18o"><!--pnid:0quSqpKNS4OS1wtMF6ouEM-->多模型路由策略、降级与故障转移；</li>
+          <li data-page-node-id="ptpaQdxY8WIhrL1xJnrxaG"><!--pnid:sfRBo1IOWXHlTsInLYwdS4-->按业务线核算成本、防止单个业务刷爆预算；</li>
+          <li data-page-node-id="1rx91814UEvrAwPLYo1GqR"><!--pnid:sqTxK1VcKbLG18kJ5hnI1r-->可观测性：如何在 5 分钟内定位「模型问题 / 网关问题 / 业务 prompt 问题」。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div data-page-node-id="1WuFsZW4k4JOO63qKLoDJe" class="block">
+      <div data-page-node-id="7QmYmnd9EKBOE6rR8EaLFs" class="block-h"><!--pnid:3csWmnTeHehdk83ouQk3rB-->你的回答（要点还原）</div>
+      <ul data-page-node-id="edP3u3noe1lbRZUCKKrBiR" class="answer-list">
+        <li data-page-node-id="lrGgVn5jciLmdPRnFgRwgc"><strong data-page-node-id="ekREqwoCqhk7a7Xh5wVUGr"><!--pnid:zDPyOnysSb60ONvsDpJgWN-->定位</strong><!--pnid:zKmKvQPVE8ZWgxUEA97FPE-->：本质是 AI 网关，由平台统一维护模型基础设施，业务方登记项目、领取 API Key 后调用。</li>
+        <li data-page-node-id="jpI7lXWczHPTK2o48adYsk"><strong data-page-node-id="bxGwVZU0qWTgKongVZiSl8"><!--pnid:PkqeiXhev3PlFSlGn1CmRD-->两种封装层次</strong><!--pnid:jdU46ZSoRS2sLX8NT4YFbl-->：①<strong data-page-node-id="74y6mqnR6H3QoSAzdJPMee"><!--pnid:L1foOb1oNh9ISuETCEBNnT-->薄封装</strong><!--pnid:bPXFmE1t1WAvqvH9Pbcfem-->——只做基础请求转发，限流等不处理，给业务最大自由度；②<strong data-page-node-id="EoIWJjMbddw3kGYk9xKTpx"><!--pnid:YfnWHLao07C543DAiUqXXd-->厚封装</strong><!--pnid:rsPfptF9AIeOqeiIyuxW0R-->——业务只管选模型，网关统一屏蔽报错、重试等底层细节。按业务方要求的自由度选择。</li>
+        <li data-page-node-id="xmLpRz7kESFc42PkITC5kM"><strong data-page-node-id="AwJAffFoWntALXa6K0WfGT"><!--pnid:ME9Adodjxl4yDwyx1XU0RB-->路由与降级</strong><!--pnid:wQqCIUQwXxter2zr7Dk4vc-->：多数情况没必要做「无缘无故的降级」，因为业务方明确选了某个模型版本，静默降级会导致其无法排查问题；若要做，应提供<strong data-page-node-id="NwYuK6MjU0I3nVoMjsm15C"><!--pnid:I0xPgTaUq73N9RUae0IsgK-->降级策略配置</strong><!--pnid:HYbMZ1HTFI9chU6hLzVgHB-->交由业务方自行设置，保证可追踪。</li>
+        <li data-page-node-id="3BL0DJoZGbyuf0lHDGGBf5"><strong data-page-node-id="OL2BH6ab0tuAg3MxRxhk2x"><!--pnid:TL9xkEML1GZ8CSzlmnWBCN-->成本</strong><!--pnid:LH1EaszrvOjuXQEcKgRVZ6-->：每个业务线独立 API Key → 全链路审计日志 → 按 key 归因；限流用 Redis 令牌桶；配额通过工单流程升级。</li>
+        <li data-page-node-id="C3LfCLudjzFfoXwVdpAxLA"><strong data-page-node-id="ebtEOPX95BztSZc3289VNz"><!--pnid:0eRIPQuAoTZVigV3EoW8kl-->可观测</strong><!--pnid:8m7P7BFE4K70ZX9zCSKCtH-->：完整审计日志，每个请求带 request_id，据此可查是模型问题、网关问题，两者都不是则是业务提示词问题。</li>
+      </ul>
+    </div>
+
+    <div data-page-node-id="L11wrwPlYfVciqjUPZscVx" class="block">
+      <div data-page-node-id="D99tN1RfZt3K24mNSSnDxs" class="block-h"><!--pnid:c0eymZobyTr5D2el7Kfp0B-->面试官评价</div>
+
+      <div data-page-node-id="V3D4Cd3ykULbCRlhgj1Mu3" class="ev good">
+        <span data-page-node-id="5w8rQwvtsIZJieMugrv8BV" class="lead"><!--pnid:ebATlYt8iNA0e9hok7HrZl-->✅ 做对之处</span>
+        <ul data-page-node-id="Lv4mCtaPQWqDJsLTudeO67">
+          <li data-page-node-id="2OY900gnd8GOqBMvxcHt03"><strong data-page-node-id="2A0pmuclyrx8Gre3ApXxo9"><!--pnid:9T6XBj2qQ2Hb12I7WQChBv-->产品分层意识好</strong><!--pnid:3j834wMFs2IqBEGyiSv1my-->：「薄封装 vs 厚封装」的区分是真实平台设计中的核心取舍，能主动提出按业务方自由度选择，说明有平台思维而非只会写代码。</li>
+          <li data-page-node-id="ZnXWWfCpfezFL9Y7jkS9yY"><strong data-page-node-id="sqTItU5XQEeYxg07poBbSk"><!--pnid:wrnddo3EIIIWPCRy4Vbvgg-->对「自动降级」的质疑很有价值</strong><!--pnid:Ojmf0DAHfDE3x8MIJAON1r-->：指出静默降级让业务方无法归因，主张降级策略由业务配置——很多候选人会无脑答「做自动 fallback」，反而埋坑。</li>
+          <li data-page-node-id="2NphQ9SGBvQnLLEBqf0unA"><strong data-page-node-id="EwGv4f0QnXdIdGdksP5PUH"><!--pnid:svUKSQBJnpYFOXAkZ7l1EN-->成本归属链路通</strong><!--pnid:kwB19GbXqmYWvYqaNJFI61-->：独立 Key → 审计日志 → 按 key 归因 → Redis 令牌桶限流 → 配额走工单。</li>
+          <li data-page-node-id="xyE3sgeno2GHrIxdNwVFrX"><!--pnid:58v6vwXlyYEAPmMPy98KyT-->可观测性抓住 request_id 这条主线，方向对。</li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="S492KYZqw22aXc8dOTixVr" class="ev warn">
+        <span data-page-node-id="kvtIBn7ZN8xCjMf2ehBPSa" class="lead"><!--pnid:O7PaSG4JWs13qfIRMGzs0l-->⚠️ 待改进</span>
+        <ul data-page-node-id="2twJssmJNnlnaPZvGsXZ95">
+          <li data-page-node-id="zx5OHdgGNKze9ijOnL4u2y"><strong data-page-node-id="NpsI24GxXnUDG8kyVWlFZs"><!--pnid:mO17rUvdMLuxwYgZb4To6a-->架构没有真正「设计」出来</strong><!--pnid:lXYFVGAnWnH4m1sSMXHn4I-->：题目问核心模块与请求链路，你讲的是产品形态 + 几个运维手段。缺适配层、熔断、别名路由、流式、安全等必备模块。</li>
+          <li data-page-node-id="GgZKDQifJ4Gzc501gdE4P5"><strong data-page-node-id="OS9kV9LH3s5W5uFxh6CM5q"><!--pnid:Uhva04pDf70fDYW2lgPy7B-->降级不该被否定，而应被分层设计</strong><!--pnid:etZ8uY31gHxOvADC2Z1pZ9-->：正确做法是引入<strong data-page-node-id="CNRqvvyHu0swUGjeTu1Lyj"><!--pnid:43X0KtJlmB9ftfo2OVelJ9-->模型别名（alias）机制</strong><!--pnid:A86ucjMbpD4YfKAuMyF7Et-->——业务绑定 <code data-page-node-id="PWsGxZF8kA7zrSQ9TeVukF" data-pnid-children="4Cxd5wPE8DT3NvhwC70QkM">chat-fast</code><!--pnid:oLlQN68I90CqyXIltthRpo--> / <code data-page-node-id="nKTt5kM0KCI5MGbhVzFmse" data-pnid-children="ITVqVc9ZdnrhDFZrrX90g7">chat-hq</code><!--pnid:XJPPrEnjB8g9p2Bq3QfeW8--> 这类能力档位而非具体版本，平台在档位内路由与切换，同时通过响应头回传实际模型 + 告警保证<strong data-page-node-id="25guFUmityrPUBnWhQ7zfo"><!--pnid:5rL0GbDs2SxBim0FIJ17Ip-->降级可见</strong><!--pnid:AYGzvHvV52RUAdsjC9puMU-->。</li>
+          <li data-page-node-id="Wic3JtKsYh39TNNyrO7K29"><strong data-page-node-id="d4OMjZfWCsycTsaFcIaZwK"><!--pnid:by5lDIuIXNr95Rtm2VCSOI-->重试/超时讲得太轻</strong><!--pnid:qS4wxTpnKjYmMTkRlVIy72-->：只说「统一包了」。要答的是——哪些错误码可重试（429/5xx vs 400）、指数退避 + jitter、最大尝试次数、<strong data-page-node-id="Ne6dP3Xeo8jhWJs4MUa93e"><!--pnid:Bl2x2puYH4c3NIYbguVF7d-->总超时预算</strong><!--pnid:0boB0qGcLpFludmLUCve8i-->（防止重试放大打爆上游）、写类请求幂等键、<strong data-page-node-id="HaCvUu6O5pYrKhbWsuQfwN"><!--pnid:twLieC77inkZ2RRTKS9yAb-->熔断器</strong><!--pnid:35hFso9psULrPSKQwgnyRq-->（上游错误率超阈值快速失败）。</li>
+          <li data-page-node-id="PfZVGy1Rw6FSmmT0V6cICu"><strong data-page-node-id="Oz8jMK7RyZcibTMKtMQtkR"><!--pnid:J87Q7OlMiCnlU2AQOtb19z-->流式（SSE）完全没提</strong><!--pnid:kx3tGBvUarjdVUFpgRx9n3-->，而这恰是网关最易被低估的工程难点：流式下的错误处理、首 token 超时、中途断流的重连语义、token 实时累加。</li>
+          <li data-page-node-id="tmbXIDd8tCxLV5h9hJq7cx"><strong data-page-node-id="0kG7RcxrLqUzrNFjo2J2Yb"><!--pnid:66gYguLYwGgWIw8s0sGQ5N-->成本治理只做了限流</strong><!--pnid:oLdVAP3pBcDS3EpHAikTN2-->，缺：token 维度配额（按次数限流挡不住长上下文）、请求前预估 + 硬/软限额、预算分级告警、缓存命中的成本抵扣、异常用量检测（某业务突增 10 倍可能是死循环或被刷）、月底对账的计费口径差异。</li>
+          <li data-page-node-id="7JzxOnK4sOozJ3O689E8G8"><strong data-page-node-id="qV7A75IspdqUoiRpyikCrS"><!--pnid:6Bmni5Y8UTrkTyTHJYqqWo-->可观测停在「有日志」</strong><!--pnid:fGjgQFiDGcq9gS4RlAHxor-->：5 分钟定位需要分层诊断能力——provider 健康探针 + 合成拨测、分 provider 的 p95/TTFT/错误率看板、request_id 串联的完整 span、以及<strong data-page-node-id="xAkMwtsoU5tE7cMIcbU2XE"><!--pnid:FKg1j9qwtrdG85Nm5SO6xF-->质量指标</strong><!--pnid:bt68TV5OTcBJCtoiudiVi2-->（不只是通不通，还有答案是否变差）。</li>
+          <li data-page-node-id="YgFA22Qi4Rr9ErQWYpD3q6"><strong data-page-node-id="H0JDh2nx2wmBadxBUayIhp"><!--pnid:h91Zy7R0LHclaJk3KxU1RQ-->缺安全与合规</strong><!--pnid:agMwOH1vdXLWAaISAmT5se-->：密钥托管（不可明文入库）、租户隔离、PII 脱敏后落日志、数据出境/供应商合规、prompt injection 防护。企业网关题这是必答项。</li>
+          <li data-page-node-id="PQqAMvIssDy0cuVGcWnTOH"><strong data-page-node-id="kUCq3Cyltc4OoTRImzRHdF"><!--pnid:IihZWc3cTj6I6aS2M3B6LU-->单点风险未提</strong><!--pnid:Zf0jTE4k8DX9iHtcfnbH8g-->：网关是高可用关键路径，需多副本、无状态化、配置热更新、故障时的逃生通道（允许业务直连兜底）。</li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="hyJPYDMkGE07zyPWjjZ6dp" class="ev ideal">
+        <span data-page-node-id="B366dk9YL9GD90QNTnwB70" class="lead"><!--pnid:8O8NuZf3GcW4IWGLidrA5R-->💡 标准答案要点</span>
+        <p data-page-node-id="drb0KaLZXChvXlEHYNdAKO"><strong data-page-node-id="8lJg0ptadbTSNQylcdjIv8"><!--pnid:1dSkClKVQnwuOld7LvQNFK-->1. 分层架构（请求链路自上而下）</strong></p>
+        <pre data-page-node-id="KTANRYjnzYHI74Hlk8GCLb"><code data-page-node-id="52mlHDzQhZEmKm0lr8fK9l" data-pnid-children="6rJ5DmmLiHtEllG75YRyl0">接入层   统一 OpenAI 兼容协议 / SSE 流式 / 鉴权(API Key + 租户) / 请求校验
+管控层   模型注册表(别名→真实模型版本) / 路由策略 / 配额 / 灰度开关
+适配层   Provider Adapter：入参出参归一化、错误码归一化、usage 归一化
+执行层   重试(退避+幂等) / 超时预算 / 熔断 / 并发池 / 语义缓存
+观测层   Trace(span) / Metrics(TTFT、tokens/s、错误率、p95) / 脱敏日志
+账务层   用量聚合 / 成本分摊 / 预算告警 / 对账
+安全层   密钥托管(KMS) / 租户隔离 / PII 脱敏 / 内容审核 / 注入防护</code></pre>
+        <p data-page-node-id="ruCnVbcJZJn0gkMvYO2vpN"><strong data-page-node-id="s450r4XrMlL8lVb6fQ5lnA"><!--pnid:7V8NViKGKihqlW3u6tVpRU-->2. 路由与故障转移</strong></p>
+        <ul data-page-node-id="KauoxXSpflMUbzz0N4pSGh">
+          <li data-page-node-id="wnlXmDDVj6O1516Np2WbOU"><strong data-page-node-id="EAYVaTRdYt9IytGkWrtXaI"><!--pnid:bxSea1ahwpwM6EwhpxRYAr-->别名抽象</strong><!--pnid:tf488q6KvT1u6JrfkHYekF-->：业务绑能力档位（<code data-page-node-id="jFgZwBAA3MIxkyPZABcslS" data-pnid-children="sVNi3tTTxBTGp1nabMN89A">chat-fast</code><!--pnid:lAWE3RxSjWlMpxzCPnzDCb-->/<code data-page-node-id="e9e1964l7fX9qHYS0BQbVV" data-pnid-children="PaKoODF1GQmvn3FvR0ys2Q">chat-hq</code><!--pnid:R7HTT7wmFTI452cHmRGLJA-->/<code data-page-node-id="UXgvR7xCtV7qturtuekTZx" data-pnid-children="7c8qwUgEmR0HThtqzCAnia">embedding-default</code><!--pnid:Ng15lfwonAxajLwxronkZH-->），平台维护「档位 → 模型候选链」。</li>
+          <li data-page-node-id="oZezTfSfLRN3EkzvtUcX9K"><strong data-page-node-id="QOfYJdQxkJfpD6MzCTdvB8"><!--pnid:LCc56mQP3of72vrpGIQ8yJ-->路由维度</strong><!--pnid:rchjxtiQgGSotgLkuJoxGe-->：显式指定（业务硬编码） / 成本优先 / 延迟优先 / 能力优先（按任务类型）/ 灰度分流。</li>
+          <li data-page-node-id="D8KSU3l6obiuQPrc2yKvs8"><strong data-page-node-id="ORXKxk9eRbClb3MNAVpq1E"><!--pnid:eCl5Zpm5RcrgSZCuh4E2wu-->降级链</strong><!--pnid:Nv5PPFllNr9uFB1Dp0OoVi-->：主模型 → 同档备选 → 跨档降级（必须显式告警 + 响应头回传实际模型）；业务可配置 <code data-page-node-id="MpyQD0dO1pOltrqsIuffiu" data-pnid-children="yuh8pRE3jz0QeXgmC6HhIl">allow_fallback: false</code><!--pnid:RyEePqJLi3VH1TS1m5ZZtl--> 保底。</li>
+          <li data-page-node-id="yxKGcVncIo7JkBxMaBIEWy"><strong data-page-node-id="WKWyWPcxoSKjkNF7FYtnfD"><!--pnid:EQM9ypw7Ej3BS5d7uBq27t-->故障转移</strong><!--pnid:i9eZC7zDrAcZCgZTDLlExU-->：健康探针 + 熔断（连续错误/超时率超阈值 → 摘除 60s → 半开试探）；跨 region/跨供应商切换；切换事件写入审计。</li>
+        </ul>
+        <p data-page-node-id="cGJgW7Fgv4Ha80NnHLDXtO"><strong data-page-node-id="eY9OrU449fg7K7TczwcbcG"><!--pnid:823aG6GsdgFZng5PSvmJiD-->3. 成本与配额治理</strong></p>
+        <ul data-page-node-id="qbevTkxOmh70MWVxBNvwc7">
+          <li data-page-node-id="83jZzIwgEZjJsqreCiNhtF"><strong data-page-node-id="YYTuI1uFUkoNgV77mAL0TS"><!--pnid:wCm8b9uLS4YvCaxb9i4lDL-->三层配额</strong><!--pnid:onAOZ0AwXqYY0auvZ9Y6AS-->：请求数（QPS/RPM）+ <strong data-page-node-id="xByf2RASCNPiz1IJxWXEh8"><!--pnid:mGIcUXD4gLx1VeULfgTLnQ-->token 数</strong><!--pnid:BBHCXKhxImLaXWkVBfFR47-->（TPM，按输入/输出分别计）+ <strong data-page-node-id="h8DLYwWbZkE0VFbQMub4gJ"><!--pnid:VTInvcVQbw7s0l89aKZqeF-->金额预算</strong><!--pnid:mniaP6OxaQM2nHB36WJynO-->（日/月）。</li>
+          <li data-page-node-id="r3Lda2BZBGeAPSd8EgBRmN"><strong data-page-node-id="T24PtiO8oM6ac7KmCaHalT"><!--pnid:OmYBmipylOg9TSRhFHJIhl-->强制执行</strong><!--pnid:boO7NSgAw81uKNjK0jz2Cj-->：请求前按 <code data-page-node-id="XaoqkMsvl6BuUhYipTkows" data-pnid-children="4RsnJVUYttfWZe5UBKmhaz">max_tokens</code><!--pnid:doYwR1LZNttj4WKzOnZozB--> + 历史均值预估，超预算直接拒绝（软限额告警、硬限额拦截）；Redis 令牌桶 + 滑动窗口。</li>
+          <li data-page-node-id="0O1p4DnPIkHag8gc7yQwOy"><strong data-page-node-id="AVKpB5sgOUYCgRQYp0P7zW"><!--pnid:hoVzt9HjLTkcaibl2dDLbx-->归因</strong><!--pnid:zNctGvuNRPGrsWBre78ikO-->：维度 = 租户 / 业务线 / 应用 / 模型 / prompt 版本；口径区分「平台计量」与「供应商账单」，差异部分单独对账。</li>
+          <li data-page-node-id="GALySJikSSUl3s4oE15VUp"><strong data-page-node-id="mn1IM90f03BFbRr9t27uPw"><!--pnid:7Ha3coE2BanDcBnZqstLuV-->异常检测</strong><!--pnid:7scJqF7Kq15lxaCaTOiHcz-->：同业务用量环比突增 &gt; 3σ 触发告警（常见于死循环、被刷、日志误打）。</li>
+          <li data-page-node-id="pCHeOzHetOQOIcszja33A5"><strong data-page-node-id="YH70DLhfrzuKTXyGNH42co"><!--pnid:fuWre1ikCpEZraf7QKOckx-->降本手段</strong><!--pnid:0btv44KL55BKB0aiZdEPW9-->：语义缓存（命中率是核心指标）、小模型路由、prompt 压缩、batch 接口。</li>
+        </ul>
+        <p data-page-node-id="IVP3s2xbukhQeCk5xhKbaz"><strong data-page-node-id="02kwupYz0quRtNsCUor8d5"><!--pnid:lnmEur3MbQfzvAWUFWOSkA-->4. 可观测性与 5 分钟定位</strong></p>
+        <table data-page-node-id="pl71lQGmwHFsF864SKLmDO" class="mini-table">
+          <thead data-page-node-id="Uph4c5IkI94FQmG5AfjcxP"><tr data-page-node-id="vxBV2cNsxlCcGBj1ssUSON"><th data-page-node-id="zn4Aiq8Vjzc9pv4comglYX" style="width:130px"><!--pnid:UpJeyLIiI2XNBeAAybfRiU-->症状</th><th data-page-node-id="Y3Xobf1iQK9AAy75xs6PiE"><!--pnid:PastChAP1XeybUduOlrSgP-->判定路径</th></tr></thead>
+          <tbody data-page-node-id="W5gDnWouCUpP9A76D15n6p">
+            <tr data-page-node-id="53o80lt75dH9qZJLnQ4KQj"><td data-page-node-id="xw4tDigkvn8wIHGx2Q6T6q"><!--pnid:OJHOgP3cW1bxWPs4tpVaJl-->全租户同时报错</td><td data-page-node-id="HRXIkxNbVDmKjckUChgqxE"><!--pnid:Wd6mnhDvETTzF11h0vxQX5-->查 provider 健康看板 / 供应商 status page → 判定为模型侧</td></tr>
+            <tr data-page-node-id="OMt1a16C18FJAlQ3M0PAXe"><td data-page-node-id="cG8NU2IF9MkflC3KRyp2DJ"><!--pnid:QBSk5ltTDi9IihaqCL1lRy-->单租户报错</td><td data-page-node-id="tWjCo1efr5y4hozfVVi0qr"><!--pnid:7FDUU3fNm4ukyyJ89hx59N-->按 request_id 查 trace → 看是鉴权/配额/参数校验 → 网关侧或业务侧</td></tr>
+            <tr data-page-node-id="uApkKtElo0kyMUn7QMdgU0"><td data-page-node-id="jf3RHAmwuRRoJiCI76J70Q"><!--pnid:yceYYRyr3dnk45zNz82IA1-->错误率正常但答案变差</td><td data-page-node-id="bmzwTtXSGilnAJd07EIWGs"><!--pnid:cjWnJx89eL0WknpL7CNwGY-->对比 prompt 版本 + 模型版本变更记录 + 评估集抽样回归 → 业务 prompt 或模型升级</td></tr>
+            <tr data-page-node-id="endjCdvJruqUXHgOCLeqJb"><td data-page-node-id="uOX0arLHFTnWyrJ8gS1aRo"><!--pnid:mem8kMPfFUtusqhHn3SQmr-->延迟突增</td><td data-page-node-id="BeNp11pfcKE3Jvrra8IvC5"><!--pnid:EasK1VoD2zo2YvQ5xPDEru-->拆 span：排队 / 上游 TTFT / 首字节 / 流式总时长 → 定位瓶颈段</td></tr>
+          </tbody>
+        </table>
+        <div data-page-node-id="ilDAzqNMbpqu90ORmA22s3" class="kv-note"><!--pnid:fpCh3n6gHYD88MmilXLg6m-->必备：<strong data-page-node-id="4DaI7V2UVAe6VIBCgO5Mzd"><!--pnid:329LpQLCh16d0PZw0b5PI9-->合成拨测</strong><!--pnid:HBuilzkOeafnZeyO0ezro9-->（每 1 分钟对各 provider 发一条固定 prompt，测可用性与延迟基线），这是「5 分钟定位」能否成立的前提——没有基线就无法区分「模型变慢」和「一直这么慢」。</div>
+      </div>
+
+      <div data-page-node-id="JP1JoZS7gzB35edliyqYsI" class="ev score">
+        <span data-page-node-id="kxfQON1GSHHaeepVTGm3l8" class="lead"><!--pnid:JJavkiDkfOORwUkfZsUNLS-->📊 评分：6.5 / 10</span>
+        <p data-page-node-id="lJIzs1CliqSdlBa5ahUSnV"><!--pnid:QvdnPiqGE5YR66lcM76qAm-->平台产品思维 <strong data-page-node-id="lPTN9aB6lsbmdrCbHaYRgF"><!--pnid:cOhI2GutUtE8zLoG0zPYpj-->8.0</strong><!--pnid:JjtZKF0GArOeYUfjWXQjOs-->（分层封装、降级可配置确实亮）；架构设计完整度 <strong data-page-node-id="frUnN8c3FFUh8aB4nxY1D9"><!--pnid:bYt2Lc0GJGuXOa4hRgqv29-->6.0</strong><!--pnid:XV2nLbgkT6Q6EL1pC8xkhn-->（缺适配层、熔断、流式、别名路由、安全）；运维与成本治理 <strong data-page-node-id="nak0vqLXSMgYHU0J0uD2us"><!--pnid:PEypMka1WogxlJGJlcY82P-->6.5</strong><!--pnid:VlvZr8TRtDMYINhseHhgfl-->。综合 <strong data-page-node-id="LPOYXMXLYLKGhGQHvByg09"><!--pnid:qzLbRnsgYLOZu4mzYPSPyA-->6.5</strong><!--pnid:Y2OSU1Aq0mcrY4eaebIfGu-->。</p>
+        <p data-page-node-id="vruIAL4WhMDACU2jUIRMs6"><strong data-page-node-id="WsIFep5jSBBjNp8nyr71Iv"><!--pnid:NIQkeJHzKKbUrmFs9V5IP1-->共性观察</strong><!--pnid:vjzd33O2DEul33TVQbT3hO-->：答案多是「我知道这个概念 + 我会这么做」，缺模块级结构化展开与失败场景推演。高级系统设计题，面试官在数你覆盖了多少个必须回答的坑。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--pnid:ckebVpYTqn7alvPdUT474r--><!-- ============ Q5 ============ -->
+<div data-page-node-id="c3hPpZOyPNkIApeS7k4Lza" class="q">
+  <div data-page-node-id="zVORKWnWa4Y6BfPxiyF34L" class="q-head">
+    <div data-page-node-id="xRPtmGr6i6f9cPJv6qsB7N" class="q-no"><!--pnid:KQmCJJGIFwafk5yPEZGoEt-->5</div>
+    <div data-page-node-id="Cp0Wc8nikoPxyXEDpVLV6g" class="q-title"><!--pnid:UsECk965vOTu7RPQKRocRW-->评估体系：离线评估、LLM-as-Judge、在线指标与回归防护</div>
+    <div data-page-node-id="pNJFdHCArrpcNyqOCd0zBX" class="q-tag"><!--pnid:z5bCnKHCdtdg2oHoLW3lKO-->评估体系</div>
+    <div data-page-node-id="KEW6yTY0RGt4XQiLAwx4R1" class="q-score mid"><!--pnid:JTYEIkOhD1KB0lytgwyMuh-->6.0</div>
+  </div>
+  <div data-page-node-id="S9KjaVQ8cxWENZ3fbtBCrh" class="q-body">
+
+    <div data-page-node-id="QUOWM0H9lD5ioaKTcrNe6U" class="block">
+      <div data-page-node-id="ekSsL59W8Q97yChMvT9FvL" class="block-h"><!--pnid:3tK9FHQLj6MxGPY7FfphPo-->题目原文</div>
+      <div data-page-node-id="kcJChAsyusLHY2sPy8jHgY" class="prompt-text">
+        <p data-page-node-id="ODsbuMp8Cp83cNEuvlkiqs"><!--pnid:znouiYAd6ZjvLphrBJEcXn-->RAG 客服系统上线，老板问「它到底好不好？比上个版本好了多少？」，你说「用户反馈还行」，老板不满意。请设计完整评估体系：</p>
+        <ol data-page-node-id="RnovBK0qjFYY2FlhVflhNs">
+          <li data-page-node-id="2y8E079EaDeqtGfWc5YJDR"><!--pnid:FvuTpVQs7GKTDPQXm4ef5Z-->离线评估：评估集怎么建？检索侧与生成侧分别评哪些指标？</li>
+          <li data-page-node-id="xZKyGjbbOj2boZM5ki7LF1"><!--pnid:PhL8pO1BXhkTH0DS8a8mtG-->LLM-as-a-Judge 怎么用？可靠性问题怎么处理？</li>
+          <li data-page-node-id="7x6NwyqTzv25SapxFYslxF"><!--pnid:tzI7R5NsxAtbDWOxqpacm2-->在线评估：用什么指标？没有标注数据怎么办？</li>
+          <li data-page-node-id="r4i7Yj9kk26HkCqoRFIIwQ"><!--pnid:iPhuYYx5h63sXUemQuZvCJ-->回归防护：改了 prompt 或换了 embedding 模型，如何保证不会偷偷变差？</li>
+        </ol>
+      </div>
+    </div>
+
+    <div data-page-node-id="ZHAtpkTKZXzg7Fdk130ULY" class="block">
+      <div data-page-node-id="WNWO4Vr5qEIUcJMlETgN4u" class="block-h"><!--pnid:X6QEkwVmVTy4HHEfzpNk8N-->你的回答（要点还原）</div>
+      <ul data-page-node-id="3PEVEctNGYBE6ieLfAjoYu" class="answer-list">
+        <li data-page-node-id="cmmCtxhG6Eyjbtbwvvt4Bu"><strong data-page-node-id="nx0qSrjfxJThF8rQcGsyAv"><!--pnid:O5tfreOczbDx6FZ3Xa8xAx-->评估集</strong><!--pnid:qzVCK8nAEUAIzV8SUKRhKc-->：优先复用企业知识库中现成的问答对；按问题类型分层构建（常规问题、难例、多步问题），并定好各类占比；评估集需要持续更新——从线上低置信/低意图识别样本中记录、回流、再入库。</li>
+        <li data-page-node-id="jHeUMEO56aaKGdjtMlsePL"><strong data-page-node-id="NSWqljg7YR54eh42xsLLzP"><!--pnid:OLgOlV7hK9pkhPshJUYLID-->指标</strong><!--pnid:ZM2qTwq8hFBkh1kzzmZN3s-->：检索侧最重要的是召回率（相关问题召回了多少）、最相关结果排在第几位；生成侧有忠实度（答案多少来自检索内容）、检索内容被模型使用的情况、回答准确率。</li>
+        <li data-page-node-id="jVHS9ozDRO5nxmNRvjeXF4"><strong data-page-node-id="gYZog3I516FHDwMKuAoM6G"><!--pnid:388ZXTIeUQ4qKkuQetcKVy-->LLM-as-a-Judge</strong><!--pnid:bKKYLFD0VPHYLpDFWNaiiK-->：理解为通过多次验证 / 读取 logits 得到置信度分数，靠额外算力提升准确度；可靠性靠 logits 分数判断。</li>
+        <li data-page-node-id="ICe5i8SYXDB6dvmd5NQWlI"><strong data-page-node-id="NBlmHBdh5QAm9fMKXbkX2c"><!--pnid:EFeJHjnXaDvGxxjeb7h4bq-->在线指标</strong><!--pnid:zxRiYIIT3B1CdayUZaONIF-->：准确度、用户满意度（点赞/点踩率）、活跃度与使用情况；没有标注数据就先找通用问题，再从真实用户场景收集数据作为标注。</li>
+        <li data-page-node-id="W6hPs4AhjXMvSN6ILNL7Zv"><strong data-page-node-id="7EKJ3jULU31Sr30c34l3dO"><!--pnid:7tYLjjKJ8xmqkDO6CzzXYc-->回归防护</strong><!--pnid:q64aFtxn2qWLsBSQWSYcqQ-->：prompt 分版本保存；换 embedding 必须重建索引；用 Ragas 之类框架做回归测试；上线做灰度，embedding 切换时双索引并存、流量可路由、旧索引保留以便回滚。</li>
+      </ul>
+    </div>
+
+    <div data-page-node-id="PGrl1oclHOWMXz0ko8Hj9L" class="block">
+      <div data-page-node-id="xXnJzQ2yOC494Rp6HmTHWP" class="block-h"><!--pnid:gsUK4NcTnUxFX3hhMcPwll-->面试官评价</div>
+
+      <div data-page-node-id="moRdo56tP8H1iNzxpJ5Y2g" class="ev good">
+        <span data-page-node-id="LW0pjAMgCbmFxaBTTmd35i" class="lead"><!--pnid:u0bGfqK9lnvEz4fL2ko2WE-->✅ 做对之处</span>
+        <ul data-page-node-id="Mv6M1p7VFTmCWVjdWhM5r1">
+          <li data-page-node-id="6aPDZYr6hKKULp0G0tlJ8m"><strong data-page-node-id="2ITLZ6Hc5yiqVAhhhZobRm"><!--pnid:24wekYOlEYWVx9zGugIff9-->评估集思路实在</strong><!--pnid:wjGboVAJnRd3HdPi4x6RZZ-->：复用现有 FAQ、按问题类型分层、定义占比、从线上低置信样本回流更新——「分层 + 持续回流」的意识正确。</li>
+          <li data-page-node-id="mTfWMiD6zX94pclr2O2KRr"><strong data-page-node-id="r3FfahxcbcZpWHEUwF5oMc"><!--pnid:9R73ah7xJfT1HGJZ2QVxTR-->检索侧与生成侧分开评</strong><!--pnid:Cidc62RTvHN7StLPuuSlHx-->，方向对；召回率、排序位置、忠实度、context 利用率、准确率，覆盖面及格。</li>
+          <li data-page-node-id="U5SepYgGJ71sPcKbFWEwos"><strong data-page-node-id="puux2VZlrs0FOGFtIaMxZV"><!--pnid:87RLD9e1lnEIzDpdm0wJQC-->回归防护是本题答得最好的部分</strong><!--pnid:1vRACDQgo0W4U62jCmavn5-->：prompt 版本化、换 embedding 重建索引、Ragas 回归、灰度切流、新旧索引并存可回滚，链路完整。</li>
+          <li data-page-node-id="CIkk9uCeTBqdH9CONaEPnR"><!--pnid:kXjqrNuVgKGP42ZfbtWX7a-->意识到 embedding 切换要做<strong data-page-node-id="Z3xfqQnO5YLS7hvBu9yw3E"><!--pnid:N6em4ucyX9fecNTvU0vbij-->双索引 + 流量切换</strong><!--pnid:m78PSUkP1EsqfnGRqbGe2f-->，这个细节很多人答不出来。</li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="nHM2pfxtGS9DKXFw8zOLWM" class="ev warn">
+        <span data-page-node-id="7481ryNRghFF6IPGVGKiyR" class="lead"><!--pnid:AHzygeJUba4qHfU7qmmkZR-->⚠️ 待改进</span>
+        <p data-page-node-id="XrBCMv0ajSwEKLou0BzD9H"><strong data-page-node-id="EEkI1mFRPqvn0ojZhU0mVH"><!--pnid:hGXllqHgUf4qiyCJpozabs-->① 指标偏「感觉化」，缺可计算定义</strong></p>
+        <ul data-page-node-id="XFvnILXALESrisTbazmWWl">
+          <li data-page-node-id="TUcd6ehrNTUepBjK0U1rqx"><!--pnid:6r8t5QuPaadO8Qu1m980JQ-->检索侧应明确：<code data-page-node-id="l1NFOSaeYpw1OGyI06g6Oq" data-pnid-children="46JJ1pP5GVC3h5Vca8tnKN">Recall@k</code><!--pnid:kYLnwowdD5f4ajiP3RiIR7-->、<code data-page-node-id="cEfYHIFUxZmgvJEAD7ygZd" data-pnid-children="nSa0WIyxythFYqr7cw3bvG">Precision@k</code><!--pnid:xmkU6htod9O9rY5kL4wfIu-->、<code data-page-node-id="sHd9TTYkvJeoQrEEZtBPOr" data-pnid-children="jfFagXIKy8DpdbYkfMLeQk">MRR</code><!--pnid:RXd9tl10XgLhvSrlH22Vrw--> / <code data-page-node-id="8YQmIhVX1uMpnqjObiBEGh" data-pnid-children="WPMEg79vYDJOgRhXvcVtCN">nDCG@10</code><!--pnid:HN2ByylqXj05WJT8Bb1KEp-->（你说的「排第几」就是 MRR/nDCG，说出名字分量不同）、RAGAS 口径的 Context Recall / Context Precision。</li>
+          <li data-page-node-id="eAbNwf2AbR674Vtwd9CxMm"><!--pnid:xX75gtRqE80XovZce0WsCf-->生成侧：Faithfulness（答案是否全部可由 context 支撑）、Answer Relevance、Answer Correctness。</li>
+          <li data-page-node-id="8WGUU3ngzOjFUAxZJ523cn"><strong data-page-node-id="9MziEV10W8lyjgnq4O1VZe"><!--pnid:1F16r7RqclZQqNxs4cviRF-->最关键却完全没提</strong><!--pnid:siOoOY1JdRbDThE5QXOsCz-->：评估集必须有<strong data-page-node-id="kcMfnTvWPGFvCqfRFJNHcY"><!--pnid:OCh40hFX7XBwhImIfLxcLD-->「知识库中无答案」的负样本</strong><!--pnid:z1IPGuGhVSKACWE73LtzCS-->，考察模型是否拒答而非编造——企业 RAG 上线后最常见的翻车点。</li>
+          <li data-page-node-id="a4hHZHLeHHsIfHoipjx2n9"><!--pnid:0qdvly4lXhiJh5Muwi0ehH-->还缺：标注需同时给 <strong data-page-node-id="noSPgAeVv4dFkQWSJW809w"><!--pnid:vlY4lDYHQ72Oi2NVUuJ6F4-->gold answer + gold evidence（正确 chunk）</strong><!--pnid:eax1AtcHaahjXHpNWLbJEW-->，否则检索指标无法计算；评估集规模与<strong data-page-node-id="srAU7MSPpwwkKNQj9g2JYm"><!--pnid:nZDhzy3hPG6I0cQwsOiZpi-->统计功效</strong><!--pnid:QYTHXo1FsbXI2TB9ZOatKo-->（几十条测不出 3% 差异）；<strong data-page-node-id="muhtO0AjDLdl9DPWToMwHg"><!--pnid:x5bn1LClUx4TbekWE1qfm0-->评估集泄漏</strong><!--pnid:xKQjqOMlxsRqVmI6c1BopC-->问题（反复调参把 eval 刷成训练集，需留 holdout）。</li>
+        </ul>
+
+        <p data-page-node-id="R9dgDP8rQ5WIgEp8Kx7oOm"><strong data-page-node-id="xasIz7ODs9gd2HF3y5oElv"><!--pnid:6r7MkuzdRQG72DnvUU0l4g-->② LLM-as-a-Judge 答偏了，是明显扣分项</strong></p>
+        <ul data-page-node-id="rEcWR2Xb7LU6DRCDr1oGK3">
+          <li data-page-node-id="c5eAVDGTspohwz5752oODf"><!--pnid:yhdOMXo0J7h0TtpviKNw5y-->你描述的是 self-consistency / logprob 置信度，<strong data-page-node-id="8tqXMEDfAp2siZGqQt7c0Q"><!--pnid:jbz58omKBstlsMOb0S1A7o-->不是 LLM-as-a-Judge</strong><!--pnid:HuqeGbegT8bf51nvsdFkvj-->。</li>
+          <li data-page-node-id="pj3dHyWo2Jm7vIlWHBjCpw"><!--pnid:afp3VwMmUPh5yTV3bwmlyF-->Judge 的本质是：<strong data-page-node-id="o6HaWiBq0vwuKt4wXWqOLk"><!--pnid:ozA0MqSUwSbS20JYaiete6-->用强模型按 rubric 给输出打分或做 pairwise 比较</strong><!--pnid:DvauBJUMkQwBu6w9xEUByY-->。可靠性问题不在 logits，而在下列偏差：</li>
+        </ul>
+        <table data-page-node-id="VN7r5Nv8jwwrSLOy586o88" class="mini-table">
+          <thead data-page-node-id="F0xDY3gOEOzhM5WURVnxtR"><tr data-page-node-id="HDdCDvpvaHObRoh64l3hzo"><th data-page-node-id="tl2LVpYO8wkPrtD2XDpTPg" style="width:110px"><!--pnid:tk5gUEx1HZoLerNG3JTeMn-->偏差</th><th data-page-node-id="946sFzmAuRaggLTbxIdNb3"><!--pnid:vdFP8qJzXWOSSnR5MQlR7u-->表现</th><th data-page-node-id="yEn1eWR8LwIJkPNVX0SjKj"><!--pnid:NWCX68SYVB32InfaiChX5h-->缓解手段</th></tr></thead>
+          <tbody data-page-node-id="FUstrF6jXDShIXqORBRd9G">
+            <tr data-page-node-id="DMlTM61YiTgE7WETP694TP"><td data-page-node-id="UsAjrT19mpivHTT47CPSl2"><!--pnid:wIXC6XXcsw8NgV6avdwkBq-->位置偏差</td><td data-page-node-id="gsdhXQG9Rr3sEHQMnIZcJy"><!--pnid:dn2T6KNWRilF68tBqolxzE-->A/B 顺序影响结果</td><td data-page-node-id="E9EE67dqHrEVXT9KTpYiUG"><!--pnid:8hxnyqBeUf2jpSKPIkgUgl-->交换顺序各评一次，取一致结果</td></tr>
+            <tr data-page-node-id="X8H19jApWJ1MtBr8Uk9FGk"><td data-page-node-id="yERWzipBves57NfXtRD4qq"><!--pnid:9G172tOkdfNeCSSpkTQIDb-->冗长偏差</td><td data-page-node-id="mx9DKpK6vD4ksvNXCRG0sK"><!--pnid:ohQacB8TOqB1MUiIkgJm0j-->更长答案得分更高</td><td data-page-node-id="wAmWl3kECgW80zuKce3DCF"><!--pnid:NwlBrWAMCHcox32gdHiXKK-->rubric 明确「简洁性」，控制长度</td></tr>
+            <tr data-page-node-id="7NO3dXzWGxZpFh372lT34W"><td data-page-node-id="CWSuYUAA1TOOqYK53XGBUA"><!--pnid:CoBiAk1tftb3nq2yBDtTf2-->自我偏好</td><td data-page-node-id="jr9pCwduUoqeg2mXGsWzHI"><!--pnid:aNhVInF4wdl72PQ3KIcq8t-->偏爱同家族模型输出</td><td data-page-node-id="793dli09CDqNqrakMypRfg"><!--pnid:WJ9TlL1jUZwRh00fgvhOGt-->用第三方模型当 judge，或多 judge 投票</td></tr>
+            <tr data-page-node-id="pwCIL7fyxSjUV15R9qmdsm"><td data-page-node-id="ZTcd3lYcOD722pfJShWGWQ"><!--pnid:30xnNbbHscLRrcsIrCJz63-->评分漂移</td><td data-page-node-id="KEDUHVx3l48vqmCK7HlveI"><!--pnid:6uwZ091hn2Sd9pnY3xQhTK-->同答案不同批次分数不稳</td><td data-page-node-id="u8pl2P13C4P6NQyW4NrKU1"><!--pnid:9EerCJnWnq8ZRwLK0BHuXN-->固定 judge 版本 + 温度 0 + 定期重标定</td></tr>
+          </tbody>
+        </table>
+        <div data-page-node-id="jsn0dygIZVAkI8GUzbFuHX" class="kv-note"><!--pnid:Xeof2JrwVs22iFhBD9lMPT-->正确姿势：<strong data-page-node-id="5OFyjIBvpc8RvhE3EJRZo7"><!--pnid:Gs4YtYko1GfEtNGxUrky7b-->优先 pairwise 而非打分</strong><!--pnid:y3OrgH5rtzLTGh7CVoKPAx-->（人更易判断「哪个更好」）；judge 结果必须用 100–200 条人工标注做校准，算与人类一致性（Cohen's kappa / 一致率），不达标的 judge 不能当上线门禁。</div>
+
+        <p data-page-node-id="cY8m0aAPLgjyG52IbgDYsn"><strong data-page-node-id="4JsnA7CrUzMM9ijXe4Q4qq"><!--pnid:oi7OioSKr5bV88F1VFZVqn-->③ 在线评估漏了无标注场景的核心指标</strong></p>
+        <ul data-page-node-id="7wNUqG1HX2XGQP8lqeRm9J">
+          <li data-page-node-id="MC7mNCBjSuNE1yBhJZNvg1"><!--pnid:kOqCXTZpA2KXjQ8cYz3FD4-->应找隐式信号 + 业务结果指标：<strong data-page-node-id="a1HkkglDjEGtoikJPBv1rA"><!--pnid:FHHHtvZ4la0FLAHJTNmp0w-->转人工率/升级率</strong><!--pnid:jmYhmv1b9eOo1zKQ0dG8Sz-->（最直接的质量代理）、会话解决率（containment）、平均轮次、追问率（反复追问=没答对）、答案复制率/引用点击率、会话中断率、重复提问率。</li>
+          <li data-page-node-id="SQTt5XrqVtPQAKREP4s6g3"><!--pnid:yAUJMlgzOO27S430EQAjaE-->点踩率须注意<strong data-page-node-id="C0k3Ka3JyQxUMgOv4btpNe"><!--pnid:twwkfUi7L2ZuttPC7mG0uT-->反馈稀疏且有偏</strong><!--pnid:WYURpzSspsYYkQZItb4xgp-->（通常 &lt;2% 用户会点），要用曝光做分母，且「无反馈」≠「满意」。</li>
+          <li data-page-node-id="eQmwClRqvawgyiasmOiHjy"><!--pnid:nCmcAq2JjdhfQ4K71taKiQ-->上线必须做 <strong data-page-node-id="yUvnnV42QQKZWUlCiZIofG"><!--pnid:dhMBcJTLpTzCpivY6VIo8U-->A/B 或 interleaving 实验</strong><!--pnid:e725n7owHkOGALu7tJ3TAI-->，不能只看绝对值趋势。</li>
+        </ul>
+
+        <p data-page-node-id="8focmq435CJSLTJXZa4b9F"><strong data-page-node-id="bnqAsKobTmAqHhS1IGzjoP"><!--pnid:8uy3oULcIXZ6qGmynspQWo-->④ 回归防护缺「卡点」</strong></p>
+        <ul data-page-node-id="JBFMUn1HoDpQrBCmaiWJ8D">
+          <li data-page-node-id="sibQW8UFviwW5J488BX3iC"><!--pnid:sbAJoUvos9vGkODhfbdb42-->CI 里设<strong data-page-node-id="IEKQazip1bBdmGPiUXEZwl"><!--pnid:HMkHKa8MyR68q4LR0x2Vcd-->阈值门禁</strong><!--pnid:PfNK2okSvw4dZX9K6uIgB4-->（关键指标下降 &gt; 2% 阻断合并）、评估集版本与代码版本绑定、变更前后同分布对比、<strong data-page-node-id="fNXnzXJph8Xx3MM3Mi1l2P"><!--pnid:dfMQ9XmVC4G5XjmsQOeVZl-->shadow 双跑</strong><!--pnid:avu7ewC1znyOJNEGPpZvxD-->（新链路跑影子流量但不返回用户）。</li>
+          <li data-page-node-id="5wt9LGTQYbn5Z7i7hq77py"><!--pnid:bL6j920BwGELvldP5EIYbi-->灰度只说了「引一部分流量」，缺观测窗口、放量节奏、自动回滚条件。</li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="58h8hOtaN5fmZnElNzd9Xy" class="ev ideal">
+        <span data-page-node-id="Y2iNNALwNvgSpyFS9doA1C" class="lead"><!--pnid:Su3HxBt5bFooUlmCiLUeao-->💡 标准答案要点</span>
+        <p data-page-node-id="y6Bc5zIVPn5yxVLvGLi18c"><strong data-page-node-id="SWlW2gljiudtxF8jLKafuz"><!--pnid:9u8dKWbVoxOnsUm5JYIYZX-->1. 离线评估集建设</strong></p>
+        <ul data-page-node-id="wPpdNhMO5pZWo4TPMysbyg">
+          <li data-page-node-id="IP1ogZ1FnOtVGtJ1erZR0K"><strong data-page-node-id="4mV8FcW2yxNtIj4JD6nwp1"><!--pnid:6GDcC2B1Ctpq74iR2Oq9NF-->来源</strong><!--pnid:rQn4RBGchWppFLwKm0Y2LG-->：真实用户日志（脱敏）为主 + 业务专家补充 + 合成扩增（用强模型生成问题，人工筛）。</li>
+          <li data-page-node-id="2S8ox3O52yGNdXpQ6QrQLP"><strong data-page-node-id="USA85uRghp9nvVnmbxN8tS"><!--pnid:zqWY8Dz3tDd4ix86kvEF12-->分层设计</strong><!--pnid:jU1FefqnJ8CnqYJqew4KdR-->：事实型（单跳）/ 多跳推理 / 比较类 / 拒答（无答案）/ 时效敏感 / 多轮指代 / 长尾专业术语；每类 ≥ 50 条，总量 300–500 起。</li>
+          <li data-page-node-id="y4ESPDTJmlv40sPpgHaEHx"><strong data-page-node-id="ugmNiRMUjacG3nGx05h3t9"><!--pnid:Bgop6W5q9HfKzt9vqE3Sof-->标注三件套</strong><!--pnid:pgLylu718lRolBBpmcHbZM-->：gold answer + gold evidence chunk + 是否可回答（用于拒答评测）。</li>
+          <li data-page-node-id="D55F0S7tJblNfbA35qTHoW"><strong data-page-node-id="ANcFTH87Mwovl79l0Sz0Vk"><!--pnid:LypptVWinoo1cbRWIVD8Jp-->治理</strong><!--pnid:GYJLQcGn9wTHSkMeApV4CI-->：版本化管理；线上低分样本季度回流；留 20% holdout 不参与调参；指标变化需过显著性检验（bootstrap 置信区间）。</li>
+        </ul>
+        <p data-page-node-id="Q4dLbC8UKHmxG5ycHHe6yV"><strong data-page-node-id="lezTqSo5Nm76etyhs7wGB5"><!--pnid:qqylLhXgWLMUWcXKiSBTh3-->2. 指标</strong></p>
+        <table data-page-node-id="PGr0aMGLNGmieEDnhgZhzH" class="mini-table">
+          <thead data-page-node-id="s1nY52zVOza0sBzReTTy6k"><tr data-page-node-id="Zv2p8s2Z12Ba6TUfXYNx6x"><th data-page-node-id="uula8jsU33PWEhC3ZWTPhI" style="width:90px"><!--pnid:2jpCnaFGrmg3SFYapFN6kH-->侧</th><th data-page-node-id="0KbGXvAbf0oQtLWJpCIZMF"><!--pnid:8mORZNUiYstOOYNCi1chOt-->指标</th><th data-page-node-id="zUv2TP62XbebivEYeWH9lc"><!--pnid:klcYgYMf5cN6VIIRXfnI0X-->含义</th></tr></thead>
+          <tbody data-page-node-id="QiK4Jn3fovp4LoKcjzDV2z">
+            <tr data-page-node-id="TAeYC8DdoDxPS8NKUmOKoz"><td data-page-node-id="rbJFP7r9fkkklbKkCBx25U" rowspan="4"><!--pnid:QgdpQBoqeSbjuHYgMSS5sv-->检索</td><td data-page-node-id="oYBL5QvLGDYLVUH2fRwBOu"><!--pnid:Mc8brbvyepGtswjcS8Sgvn-->Recall@k</td><td data-page-node-id="NfWSpnfYZUABIVSF8E5klt"><!--pnid:UoNLtNEsnbaY9UZY7Au0II-->gold chunk 是否在 top-k 中，k 通常 5/10</td></tr>
+            <tr data-page-node-id="sF3fwVvp8PbBCBU7673088"><td data-page-node-id="GbRqrIS6gNrTDTpoTDKnh4"><!--pnid:ENFsmETTtjmVSNXB6UO1Ij-->MRR / nDCG@10</td><td data-page-node-id="TzaqvRsjFj7iUnqdHkIngH"><!--pnid:CdBVDICW0HeWqhOQysvSDr-->正确内容的排名质量</td></tr>
+            <tr data-page-node-id="o1pAxjtu16wSO8MunRmiXr"><td data-page-node-id="9YuczV06D3y8jisNnLgrlX"><!--pnid:UXsEDRcNRMZHLIUdIl0pZ0-->Context Precision</td><td data-page-node-id="Uzs8Ggb6lnrfgmH5C0m4pe"><!--pnid:ZzaEztay1TSiWXuiTGhP3O-->检索结果中有多少比例是真正相关的（噪声率）</td></tr>
+            <tr data-page-node-id="XB5spVo4BxMCGJgcyngIAQ"><td data-page-node-id="bT3J84cVrUYiYTfd1cj6X1"><!--pnid:uYFkuYwa5HOr0NyxFeq0vS-->Filter 准确率</td><td data-page-node-id="vE8xPxpgbJvB9hGvAUqLWb"><!--pnid:obX40db9C9L3LfxtKTKwCU-->权限/时效过滤是否误杀或漏放</td></tr>
+            <tr data-page-node-id="kiJoQsTP7UbnroDk57pGiD"><td data-page-node-id="Pysx5KjzNIHAftkbVErz3a" rowspan="4"><!--pnid:uaRqBcahUkcvZYtzC5w1F7-->生成</td><td data-page-node-id="rqQoMw9Zw0UuTpoV9TFnFt"><!--pnid:estjLF7ICufbuhYCI3avio-->Faithfulness</td><td data-page-node-id="bpTXg6I3k7uGsuAZTe4TM5"><!--pnid:HhjRb6jl7eKRTbl8CoyEpq-->答案中每个陈述能否被 context 支撑（幻觉率）</td></tr>
+            <tr data-page-node-id="zKqDB7qanrGqYDWr7c0wJ4"><td data-page-node-id="eyF4AfDiYM85A103xSeLfH"><!--pnid:QeiAHc0Ga9vyIt65Qz5jSa-->Answer Correctness</td><td data-page-node-id="h9ji6ANJvsRMjnArTE4DZz"><!--pnid:yVvh1CmKOZjNyx8eR9C6r5-->与 gold answer 的事实/语义一致性</td></tr>
+            <tr data-page-node-id="JfXr3gO4PSwp0H5XTOc5J6"><td data-page-node-id="6MEZd5iaMMszGfU1VzRAnK"><!--pnid:aLn2CKrEADGvOwG9PETuhm-->Citation 准确率</td><td data-page-node-id="TXI8vLEipldPy40PLIju0v"><!--pnid:xxJWI8N16QRm5ABMNTjaNF-->引用是否指向真正支撑该句的 chunk</td></tr>
+            <tr data-page-node-id="RAOyMhjFiXKJXZSaPpiNDC"><td data-page-node-id="QqmKYMBFPWxCquomrG3tAl"><!--pnid:qAfurRuKp14aHCup0MGaVo-->拒答准确率</td><td data-page-node-id="l7Fd7L5UvYg1b3EkmHjimn"><!--pnid:W51tZ4ihMPDkB82hOoAcDY-->无答案时应拒答、有答案时不应拒答</td></tr>
+            <tr data-page-node-id="1eInOF3F4Zow13K9uz0sJE"><td data-page-node-id="EquWOz3ChaJ9MiEXMB5LeR" rowspan="2"><!--pnid:sYaWQdWHm7V2ihVSDixwYe-->工程</td><td data-page-node-id="KuIC4jaHlP9StuEGUHffAa"><!--pnid:94RyIz7z7d7HRR2erDir8r-->P95 延迟 / 单次成本</td><td data-page-node-id="fNvAhWTtMPCp2bdgAq2VNh"><!--pnid:IgpVMNhGS6yjidFfzdY3Ag-->质量同等时，延迟与成本是第二决策轴</td></tr>
+            <tr data-page-node-id="2VhzaILlXwOtj6CH8VYpNQ"><td data-page-node-id="I1ws9H1XqWpmIRY6fcADac"><!--pnid:K6dlrgv2J5ilwYwM7hxTc8-->Token 效率</td><td data-page-node-id="q30gjxIedfmNDbUNc4UgrN"><!--pnid:zoGBDNXTHMx10gdNvo8TNP-->输入 token 中有效 context 占比</td></tr>
+          </tbody>
+        </table>
+        <p data-page-node-id="FGkM6aMbeP1L8z93u142EG"><strong data-page-node-id="zNpwL0LG56a147l8CtLFtx"><!--pnid:ezV0PnnilOmEOt2LSQ7YVO-->3. LLM-as-a-Judge 的正确用法</strong></p>
+        <ul data-page-node-id="YMrMslQXOhvvjzhP1xb6EW">
+          <li data-page-node-id="dwJlRtWoPmvc09uQE4QBSK"><!--pnid:ZZMHtYoNWQomRqGGQCLjDr-->场景：开放式生成无法用精确匹配时（摘要、改写、多轮一致性）。</li>
+          <li data-page-node-id="8qxI3r2awnuqoTgGFt22Ah"><!--pnid:0krcCDsaeFJVbk8tdfCrXa-->设计：rubric 拆成 3–5 个可判定维度，每维度给 1/3/5 分的明确描述；输入包含问题 + context + 答案 + gold。</li>
+          <li data-page-node-id="WAnYs9QOM9Wf9XDnC5XIYs"><!--pnid:ePa7NPCTBjw6WnNmLAmT7u-->可靠性：pairwise 优先；双向评分消除位置偏差；judge 用比被测模型更强的模型；温度 0；固定版本；定期用人工标注集算一致性（目标 kappa &gt; 0.7）；多个 judge 投票取多数。</li>
+          <li data-page-node-id="1URaHIfvNhk4L7h3GbubN9"><!--pnid:KWKlpfsbnjRWAsADBfpq7G-->失败模式防呆：答案长度做归一化处理；显式要求「先给证据再给分」，减少拍脑袋打分。</li>
+        </ul>
+        <p data-page-node-id="TVIPVfhQDrSxjtP3N2iNn2"><strong data-page-node-id="albzC0KDxQFwLqC7vByTBH"><!--pnid:1smnYtx6stx4PbpctVQdtk-->4. 在线评估</strong></p>
+        <ul data-page-node-id="H9atXQpO8meqewqTncamXj">
+          <li data-page-node-id="jszuiMXcLe7hHKNx6N7UiK"><strong data-page-node-id="VxjzPF20DlZTyBzpj3Ntfb"><!--pnid:Dvboq3WNNPwnBmyU1QfOtb-->北极星</strong><!--pnid:BvAmPThfzya98he6jUmltJ-->：会话解决率（未转人工且用户未重复提问的比例）。</li>
+          <li data-page-node-id="8neLHHuvBph05Z4Oq4KVDS"><strong data-page-node-id="pP4QNm6LKkglU35TNfOV38"><!--pnid:qtAGvhuZIut1B46XwplfCz-->过程指标</strong><!--pnid:G1S8p0Ltoe8GxispCC45B6-->：转人工率、平均轮次、追问率、答案采纳率、引用点击率、会话中断率、P95 延迟。</li>
+          <li data-page-node-id="SKhEPDRfemmeieevDQ3xpT"><strong data-page-node-id="QOiNvrXozS3hSvkwe8rtcS"><!--pnid:AI0FQIbL0U8OO4qjbZ0nIM-->反馈指标</strong><!--pnid:F5IledFZNacmc99XKXobmI-->：点赞/点踩率（以曝光为分母）、点踩原因分布（答非所问/信息过期/不完整/语气）。</li>
+          <li data-page-node-id="XRQKKv9ZnLbYLggxnMa7wp"><strong data-page-node-id="Dn3Dilil7vc18d52nomI6Z"><!--pnid:CW9mWxDlviCdCkp3bGRJaY-->实验</strong><!--pnid:557F9NaRpFpIi5QIHnlJtX-->：A/B 分流 + 固定分流键；样本量按 MDE 计算，避免「3 天看结果」。</li>
+        </ul>
+        <p data-page-node-id="kZRMtHU4K6ihBVIfbdQUv2"><strong data-page-node-id="nE2tLxT24Y57d3cr4afiih"><!--pnid:YhaNDSV1YmelAVbZNF2IB3-->5. 回归防护管线</strong></p>
+        <pre data-page-node-id="9FGktUb3HnfLi6jiOYh4Yk"><code data-page-node-id="b7Hjcnpc0zaPCfMcE7Gewu" data-pnid-children="3IOHT5se7mu1kmwBqh57Yd">变更提交 → 静态检查 → 离线评估集全量跑（检索+生成+拒答）
+        → 与 baseline 对比（分桶看，不只看总分）
+        → 阈值门禁：核心指标↓>2% 或 拒答准确率↓  → 阻断
+        → shadow 双跑 1–2 天（真实流量，不返回用户）
+        → 灰度 5% → 20% → 50% → 100%，每档看在线指标 + 人工抽检
+        → 异常自动回滚（prompt/索引/模型三者独立可切）</code></pre>
+      </div>
+
+      <div data-page-node-id="SRY2DxU449kZSSEt9ifuJV" class="ev score">
+        <span data-page-node-id="3aeaizdeV3s5t7fV9sHSt1" class="lead"><!--pnid:pbbAAlG4xOMeA0zO8lVSiH-->📊 评分：6.0 / 10</span>
+        <p data-page-node-id="mWwV9t7xK2WloU7BV29rj7"><!--pnid:5XdoPsHlZdjM3PJSaDkrWA-->Q1 评估集建设 <strong data-page-node-id="aw8hC1q3zoyfYT7abXDY98"><!--pnid:sbgJj0v1YTp84yHAO3rwVU-->6.5</strong><!--pnid:TJDbwp42cgfWioslpEYFVK-->；Q2 LLM-as-Judge <strong data-page-node-id="H05tAjgIO2qDwzG9IkMM69"><!--pnid:TXJIbYLAIPtPsMZdHemX9j-->3.5</strong><!--pnid:QQv22EuTBFeIFeVSzhMiu9-->（概念性错误，且是高级岗位高频考点）；Q3 在线指标 <strong data-page-node-id="DnmxlRRO0yjwyCyryvl7HK"><!--pnid:qbz608ZUxNkQJEjTOih5Bt-->5.5</strong><!--pnid:mI7lqFP0WbUtdC32hnSD8X-->（有常识，缺无标注场景方法论）；Q4 回归防护 <strong data-page-node-id="clFUvH2GB1w8ikbkYiMzVH"><!--pnid:JHB9A6gbJwUdXeNXfHkDtl-->7.0</strong><!--pnid:bHecs5ewt2h4WMkOvV1yPq-->（最扎实）。综合 <strong data-page-node-id="j2ISf9lCwElq3iyX3eT3ov"><!--pnid:suNpmVU8fK3jXel0GuLLxG-->6.0</strong><!--pnid:2yymnWK4BzONuVdcKNzxLr-->。</p>
+        <p data-page-node-id="0cRm8jgEoEVAwEHoto0ORK"><strong data-page-node-id="tzfkPzryzLhGliQu59H6PR"><!--pnid:u7sDCWAQUzj57n3G26fdSQ-->提醒</strong><!--pnid:nZyytQbQGoRCc3qCeW9y1F-->：评估能力是 AI 应用工程师从「能搭 demo」到「能对结果负责」的分水岭。这题答不好，面试官会怀疑你做过的东西是否真的被量化验证过。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--pnid:Wj1eEgIGTezoA1ZTZiSI6A--><!-- ============ Q6 ============ -->
+<div data-page-node-id="uG5KUUvmPOOUgt8IZrqkCA" class="q">
+  <div data-page-node-id="iIyx8QjlRSGVOl6HZ5Uwb9" class="q-head">
+    <div data-page-node-id="MWr7AuExdhHCsCiR7hHGRD" class="q-no"><!--pnid:gQqvAJlDSfYRxprOH3Gu0F-->6</div>
+    <div data-page-node-id="5cisuRh9hIdKtkeRJe6yL3" class="q-title"><!--pnid:yGmyY79i6uCLOfQxb4T4Oo-->行为面试：一个主导推动但中途失败的项目</div>
+    <div data-page-node-id="5n8wpP66fdlsOhU1N1Wh5F" class="q-tag"><!--pnid:AQPUxcRAeJsCu5ziAlat0U-->行为 · STAR</div>
+    <div data-page-node-id="dcMxRUn4LDjTvO7v26rGEX" class="q-score mid"><!--pnid:seXHq5dNX9DRdPKojma2nO-->6.5</div>
+  </div>
+  <div data-page-node-id="vE9cF2FgvyjF72UaPnSv8x" class="q-body">
+
+    <div data-page-node-id="JWe037KyS2y0yoGzueOoyg" class="block">
+      <div data-page-node-id="YlpjjY7WJ8BLGmASAtKL1g" class="block-h"><!--pnid:FhatmIwxcOb3pmfe3u3wQW-->题目原文</div>
+      <div data-page-node-id="gZrQ5EDFpYC7etKXGcTLC3" class="prompt-text">
+        <p data-page-node-id="DH9HRPBgADZVuLUe3oIWmh"><!--pnid:COQTjneb07Fw4sJhSJ5mu0-->讲一个你<strong data-page-node-id="4QLexcrNh1SyEun0qwOlIw"><!--pnid:wqYtcJXF6Pa6AQwJPQnnWU-->主导推动、但中途遇到重大阻力或失败</strong><!--pnid:twqd7L0Oj6CDiuoJvCuM5j-->的 AI 项目，用 STAR 说清：情境与角色、任务与难点、关键决策与阻力处理、量化结果与「如果重来会改什么」。重点讲你的决策和你犯的错，不要只讲成果。</p>
+      </div>
+    </div>
+
+    <div data-page-node-id="PXjljO7wQ8atrAXlpbk8UA" class="block">
+      <div data-page-node-id="yFBib95PFEoKI3m6OGYIef" class="block-h"><!--pnid:NP2KK9ZImoHGFKaHqaAVOp-->你的回答（要点还原）</div>
+      <ul data-page-node-id="4xq1Ajr2CGjhVYMJ9BTdJQ" class="answer-list">
+        <li data-page-node-id="bN7vzdGNsgjVsDuub6dM3L"><strong data-page-node-id="CwYFsiIpFZbuxtmIPHvNln"><!--pnid:NVaeJE4WXYF8SQU5yJwjid-->项目</strong><!--pnid:LSlouLFzl2ZkdEIhlNJCon-->：类 Coze 的工作流平台，做了一个「输入自然语言需求 → 一键生成可运行工作流」的功能，目标是降低搭建门槛。你是主要开发。同期还规划了 MCP 与智能体市场。</li>
+        <li data-page-node-id="yVqNW8NPIkeXtMg8W9zEHi"><strong data-page-node-id="24cH6V2iY5XvZVQH0i2fo0"><!--pnid:zhTuzyYEyavse5aPUFzdNh-->结果</strong><!--pnid:i7NxSw2yxEqvlwyrjhd1hz-->：功能草草收尾，用户使用不多。</li>
+        <li data-page-node-id="Hk6nXJfmAWpJb7kOVYuDU3"><strong data-page-node-id="WWnXjBiip3xQZKyT8zRsOi"><!--pnid:2Z7ddqmMy5Wxf5jmnFdKGx-->核心问题</strong><!--pnid:oj1KnlY84FQIMJl1T0BzBG-->：生成的工作流不能直接执行，需人工微调（配参数、补输入）；部分场景生成结果有错。</li>
+        <li data-page-node-id="l6rpwjfNLiU3dU3IPGSlaP"><strong data-page-node-id="0igqzTN1R29nLsFdwoqdwn"><!--pnid:depZA0zcq0wj6qVI7SEbwb-->根因</strong><!--pnid:zvXmTXNEIwn0HhZCSQVFxO-->：工作流是 DAG，但节点通过<strong data-page-node-id="xJqPnwXnSHHVc3IEJMJ3wT"><!--pnid:N6ZHruEHeoyKNcVjddvMWC-->属性（端口）</strong><!--pnid:AlZaeWh6vIJdu3NnsczgXc-->相连，每个组件上下游可连什么被严格限定；AI 必须同时掌握这些约束才能生成合法图，约束多且存在「临时为特定用户做的属性」；此外变量传递靠节点连线，没有 Coze 那样的<strong data-page-node-id="aM5WneMVgVNNDVvvzZRsTE"><!--pnid:BIbNeSubDwcX4xwAWa0e95-->变量空间</strong><!--pnid:cwQzCbVpHkHo8DtYyffpsV-->机制，因此不支持嵌套，表达力受限。</li>
+        <li data-page-node-id="MpynuXMiDcv1AYpdhrBnIb"><strong data-page-node-id="cVM9JxzRrrwmVrHgI3vk0O"><!--pnid:DXiQMyt9PGuEvFgFMWAgPq-->当时的应对</strong><!--pnid:r4w65nH118QCMaHkXI9Neu-->：把上下游约束、组件描述、属性描述全塞进系统提示词；为让组件能跑，给大量默认值（如文件解析组件给固定默认路径）。优化多轮后，简单场景效果尚可、可直接运行，复杂场景仍不行；提示词过长导致生成时间很长。</li>
+        <li data-page-node-id="wLvYcgwwjPkN2Zp3oqfCwO"><strong data-page-node-id="sLqnhfasWKvMGfSKD7xFcO"><!--pnid:FxG5zM3LoUmXa7mD7QuS2D-->如果重来</strong><!--pnid:QMnGrSmQ74eaeeOml7mpC1-->：① harness（工程脚手架/约束保障）要做足；② 架构要轻便通用，不要堆死限制（但既有业务限制导致难改）；③ 当时 ReAct 范式未普及，现在可用 ReAct 替代一次性生成；④ 提示词拆分——把「查上下游依赖」做成工具、组件信息按分组<strong data-page-node-id="MH0pnraph5TMFnMOCETrSu"><!--pnid:udfekYsLS8hyUDSDHpTN9h-->惰性加载</strong><!--pnid:66oUAwJDwi1x3jonFxT1eW-->，避免提示词塞满、耗 token、噪声稀释注意力；⑤ 最主要仍是架构问题。</li>
+      </ul>
+    </div>
+
+    <div data-page-node-id="ml8DNGjilKY10KQRSqyBSK" class="block">
+      <div data-page-node-id="53VDCh7MHNMycFa9b7KrAX" class="block-h"><!--pnid:ARhdBdTk41Efy8DkW8pS8D-->面试官评价</div>
+
+      <div data-page-node-id="OFFa6UIdXNmvVucLPg9VtR" class="ev good">
+        <span data-page-node-id="faDm9mhH7deC4saRc2HmOF" class="lead"><!--pnid:N3ZdJhUxjAPorWn6ntcdXG-->✅ 做对之处</span>
+        <ul data-page-node-id="s5GCPRq5EjRrPbpd8yeIpR">
+          <li data-page-node-id="LKtOWOop9qIddKJRcj0fkU"><strong data-page-node-id="NUfB2O3VrD8JgbfetPXpkl"><!--pnid:edpffxwCO53OJbjx8Y4dIj-->讲失败讲得真诚且具体</strong><!--pnid:nXZl2fFYti4yYDpCwHmP7I-->，没包装成成功故事——高级面试里这是加分项，面试官更怕听到「全都顺利」。</li>
+          <li data-page-node-id="2uxFvjglQfaMapyKLTIZzm"><strong data-page-node-id="yjiOBYHTCsFpmp2gSLuYNE"><!--pnid:weE2pKkcVOVKSMzGk6bVB3-->根因分析有真正的技术深度</strong><!--pnid:BLQ5HpXJPanPsY6YJ3CG6D-->：把失败归因到<strong data-page-node-id="vc2v5yp0lastQyyYlIFeAh"><!--pnid:QtLVckwsSKuFAHq6IoKBgS-->数据模型的表达力</strong><!--pnid:TiUCWMT2Ay03tBrsSdZG70-->（端口连线的强类型 DAG vs 变量空间 + 嵌套），而不是「模型不够强」。这个判断是对的，且很少有人能说到这一层。</li>
+          <li data-page-node-id="xFhxX5Vp8TyP2qtkPdsaAa"><strong data-page-node-id="7e1PwpUFFjmqJSinm7hVgV"><!--pnid:zzhzYRh5WNkNSPvlzVyDu4-->技术细节可信</strong><!--pnid:rOzKHi1soee0hLFEq3MnDK-->：约束进 prompt、给默认值让工作流「可跑」、prompt 过长导致延迟、注意力稀释——都是真实踩过的坑。</li>
+          <li data-page-node-id="aY7k9L7jmcF4T66jjeOpPi"><strong data-page-node-id="sMw4rwvBHaSF1eM0KER3T9"><!--pnid:nmX3Ey2jQ7HYZdEcXyF3IM-->反思可操作</strong><!--pnid:j9zR7jnNJrzuEVrupb9FoH-->：给出具体替代方案——组件规格查询做成工具、按分组惰性加载、用 ReAct 替代一次性生成。这是本题最有价值的部分。</li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="DYfIa3Bl5wauADqJsWUrve" class="ev warn">
+        <span data-page-node-id="d4x35d4q9KKILuDRGC6KUn" class="lead"><!--pnid:p03n6nJubzfhPV0VTzVBav-->⚠️ 待改进</span>
+        <ul data-page-node-id="oKa50wYltsY9U3qV3npKkk">
+          <li data-page-node-id="dJ91CYGXV0OzvT25nP3f9A"><strong data-page-node-id="LA73TZmQ4TKcq2qZCPOrpC"><!--pnid:FWuQan5k1nlnmgv0IU3OzD-->完全没有数字</strong><!--pnid:U4tP8RjV8ImyBIrgDjE04Z-->。全程「用的不是很多」「好了一点」「草草了事」。必答：生成成功率从多少到多少？简单场景占比？用户留存/使用率？生成耗时？没有量化，面试官无法判断影响规模，也会怀疑你们当时是否真度量过。</li>
+          <li data-page-node-id="xrcvJ5SJ4zFPLJnNJhmWHu"><strong data-page-node-id="4d9IukPwVAwGeeoLTfuouq"><!--pnid:yrh9I6OwBOvDzxyS9PFe3r-->STAR 结构松散</strong><!--pnid:0NJd6UVmAq2yK5gzvkhepR-->：大量架构细节，但「你做了哪些决策、和谁有分歧、你怎么推动」几乎空白。全程「我们」，个人贡献边界不清。</li>
+          <li data-page-node-id="6DqwaA940HGY3M3zMHXnWn"><strong data-page-node-id="CHO0KDr09E62VZ0Ty5k8Li"><!--pnid:4U5bAyC4z9O348sctA9xGU-->缺「止损与向上管理」</strong><!--pnid:QTXnQGonyadnNo8U1vS16s-->：项目做不下去时，你有没有推动——收敛场景（只支持 Top 10 高频模板）？改成「生成草稿 + 人工确认」的半自动形态？争取重构窗口？主动建议砍掉？你只说了「架构不好改，有既有业务限制」，这是<strong data-page-node-id="KUX4XYyQTr0f5e9UaeB62f"><!--pnid:0FeE4h62TDrQkEO24K0b1A-->解释</strong><!--pnid:txCz82XBGyoNneS2Qw4Och-->不是<strong data-page-node-id="dPNp2e6ofiKWdnp0ervWev"><!--pnid:QEyjjiyJKWhUICMgyIhyid-->行动</strong><!--pnid:b6tBy7aVvyu68QfGOlJCx4-->。</li>
+          <li data-page-node-id="2gAQp0avPsIdrKHqMzEQ4v"><strong data-page-node-id="cVnzYeJjuAoJdHe1i8QWn7"><!--pnid:SoYHpKmz0YHGBg8mqGtqxU-->有一个更狠的反思没做</strong><!--pnid:QIz1BXbdrHFsPTmihKPIEH-->：用户「需要微调才能用」本身可能是<strong data-page-node-id="IH4gauykGU0paam2tS7J41"><!--pnid:RxIt09MAhkXYKqzFTJZJJh-->需求判断错误</strong><!--pnid:I4OF9tTOADasWG5cow1v6m-->。也许用户根本不需要「一键生成可跑的完整工作流」，而需要「从相似模板改一改」。你们一开始有没有验证这个假设？有没有拿「模板市场 + 复制修改」做 baseline？<strong data-page-node-id="T0GowawcmFL2PQoMeb7qpc"><!--pnid:MjavTMv7D0eRoAUaRD8yVS-->没做 baseline 就投入做生成，是比架构更根本的失误。</strong></li>
+          <li data-page-node-id="9GN1qhP0FL7uslUuEqP2Hs"><strong data-page-node-id="E2uTdmcW5kA0XXloWRkLT8"><!--pnid:3qV8g8NK1sT1pJnK5qJ40R-->「当时 ReAct 还没流行」略带外部归因</strong><!--pnid:b3Zvf5o9CqxeXaKKWnttgL-->：作为背景可以，但同期用语法引导生成（grammar-constrained decoding）也能大幅提升 DSL 生成合法率，这个方案你没提。</li>
+        </ul>
+      </div>
+
+      <div data-page-node-id="sVi8x8O9lXHgMyfLbR4FXB" class="ev ideal">
+        <span data-page-node-id="AP7SsoORQUVAqxRrncqJTc" class="lead"><!--pnid:zQ8gwCCSHbqdT3Wgfv61H5-->💡 标准答案要点（同一件事怎么讲才 8 分）</span>
+        <div data-page-node-id="h0hPvPZycjR7qbMxdrCeNQ" class="prompt-text">
+          <p data-page-node-id="s0nPnpNjBZaAsOCvwRts4f"><strong data-page-node-id="doX3ARHApRnF3ruLHWXl4s"><!--pnid:moV615sDmtKStwgkTlnOEj-->S</strong><!--pnid:akjkOtIwpGQxcISVccD4mk-->：平台 3 万用户中约 40% 卡在搭建门槛，我们做 NL→工作流生成，我负责生成链路，目标「生成即跑通率 ≥ 70%」。</p>
+          <p data-page-node-id="KP7gIKCrgoR7ctfwcOHFaJ"><strong data-page-node-id="J149ow4cw8BswQUThA7kIe"><!--pnid:9TsTEhhwAnyUupWkE4xRx8-->T</strong><!--pnid:UGxbMBUseWFyVhHaG5xRKB-->：核心难点是 DSL 的强约束（端口类型、上下游兼容），模型必须生成结构合法的图。</p>
+          <p data-page-node-id="ovP9laPGU1tyaDHiniLSuY"><strong data-page-node-id="9wTJWqJZfm7D8Cla1zIqpZ"><!--pnid:uTjGBymRPH6stCK7XdDoHv-->A</strong><!--pnid:ebRfM6vZBcFjm4CLIclTVu-->：① 先做 baseline——用「模板检索 + 槽位填充」跑了一遍，跑通率 55%，证明纯生成收益有限；② 生成侧引入 schema 约束解码，把非法边降到 X%；③ 把组件规格从 prompt 挪到工具调用，prompt 从 12k 降到 3k，P95 从 18s 降到 7s；④ 推动把「一键可跑」改成「生成草稿 + 一步确认」，采纳率升到 X%。</p>
+          <p data-page-node-id="PeAQ6BSnNyoygIbMKxbt25"><strong data-page-node-id="3f9rMpXwPEiWsD3cNew8I6"><!--pnid:WF4t4S06Gm36wcV54d2Col-->R</strong><!--pnid:RKv6wyGpCds3DieHggUREu-->：复杂场景跑通率仍只有 30%，我判断根因在 DSL 表达力（无变量空间、不支持嵌套），提出重构方案但未获资源，项目转入维护。<strong data-page-node-id="9kQE4sN6EnJU0hDyDbdCia"><!--pnid:3NrqtFaotDsmxxcAAoIWtp-->复盘</strong><!--pnid:T3QVo4azV41qHWBvi1FKpv-->：我应该在第二个月就用 baseline 数据说服团队收敛场景，而不是先做通用方案。</p>
+        </div>
+        <p data-page-node-id="jOMPPXQ7ZcBSlKqYgcEVtW"><strong data-page-node-id="bZb9JC8lgHmeAsDkhZweZ2"><!--pnid:piAjjRAvDYiuuDRQNejOcV-->STAR 得分要点（面试官在看什么）</strong></p>
+        <table data-page-node-id="tSTZ3b4fRi4LLopxE2ZF0k" class="mini-table">
+          <thead data-page-node-id="67JQVmrkdnEKRLRIPvHxNH"><tr data-page-node-id="H6vhdU6v4sP1T0gZa5aeD6"><th data-page-node-id="FJiw6VRFZGuejMnKU3qPza" style="width:90px"><!--pnid:7IPDhDePB2B2ITZXFyQZan-->要素</th><th data-page-node-id="GTZj9e8z5AiGAecLftzStR"><!--pnid:wYlLobEBONdbDRkujzNjxC-->必须出现的信号</th></tr></thead>
+          <tbody data-page-node-id="1UaCTssm0lmsgdeJP7duyM">
+            <tr data-page-node-id="7Yy9fL6zvr6vAdrRcmiw6S"><td data-page-node-id="RcbJArrumo2wjchBnZr8ZL"><!--pnid:zFlw6bO5eUkL9HUmSXaWP8-->S 情境</td><td data-page-node-id="SNaIrviz7BsaIvuhYfxEcg"><!--pnid:p7DGz8cTIOND5pX7sHzMBU-->业务规模、你的角色、明确目标值（不是「提升体验」而是「跑通率 ≥70%」）</td></tr>
+            <tr data-page-node-id="9pyUyyyPfX0EeWtDR7tJSo"><td data-page-node-id="XrX06F64JvxVAY5iJdwpP0"><!--pnid:LNGD6uOcslWu6BCxbqTxfi-->T 任务</td><td data-page-node-id="HsfqKUTyyLkUilkWGl38SM"><!--pnid:Kx9e8PGn6sp8eKcFmRc1WF-->把难点抽象成一句技术命题（如「强约束 DSL 的合法生成」）</td></tr>
+            <tr data-page-node-id="GtPpYx4K2X324F0p0aUyYb"><td data-page-node-id="WfcMxJ5WzD9Vi3ySPWRXXx"><!--pnid:eMpBi7WJgqs5GZ4AcpLLZZ-->A 行动</td><td data-page-node-id="Ne58iFxNJx58ux0eeNL4wv"><!--pnid:O4EUxdLjRhR1XCD97L8qEb-->至少 3 个<strong data-page-node-id="I90xuIQEsFtT3U7cnwK1Yv"><!--pnid:u9MJeI29tStAehYIroFCdq-->你的</strong><!--pnid:fgKy39376RH0Epg2ryZRIF-->决策；至少 1 次<strong data-page-node-id="9zzPM82YM0tP7sQq1En6E8"><!--pnid:i54gbGDKJbEvuSkB2jP8Fh-->分歧与说服过程</strong><!--pnid:vtzXL5DNMA8ZN3Hh1f1w2o-->；至少 1 个<strong data-page-node-id="oR8RGISuPf0NWafaSCg3L0"><!--pnid:fgbx40p0OcJfmWLkva2q2y-->做错的判断</strong></td></tr>
+            <tr data-page-node-id="VgqNPNM0zNcAEIYMQrK2UD"><td data-page-node-id="6crkfet2lcpg0dCqbQXPNQ"><!--pnid:i6U517CALqUwHZF8r7WJcN-->R 结果</td><td data-page-node-id="7ILB8GTNMm1AkqPG7BjLO3"><!--pnid:EulDKcFVdSMfkwetSW7qQp-->数字 + 归因 + 如果重来改什么（要具体到动作，不是「要更通用」）</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div data-page-node-id="heLwrcOFKpCtI6TfeTJWqZ" class="ev score">
+        <span data-page-node-id="sztH8U7a5BNyNBWARPLHLN" class="lead"><!--pnid:mXTX999eRnIrKwYLjtaLci-->📊 评分：6.5 / 10</span>
+        <p data-page-node-id="FR0EASFVye9uQKptgXRBiQ"><!--pnid:PKFdLDGrOFEGVcnpjrrWfu-->内容真实性 <strong data-page-node-id="sp9RVSWsHS1yGHWOaLVIjf"><!--pnid:BCDheMmqsI0cBBh5oFTdLd-->8</strong><!--pnid:Yig1CWHqHYbwmkFe7zZikX-->、根因洞察 <strong data-page-node-id="tPkMQs0d2vR7a6fUsAqRSd"><!--pnid:1LhmbtNevoY9UZ2nKakqHg-->8</strong><!--pnid:VnMBerpA755GblBJXupkVD-->、反思质量 <strong data-page-node-id="3W2gUDcKvEVzernwnSMQhj"><!--pnid:seOQoAo7Cz72dQvHF4XiPY-->7</strong><!--pnid:FMiNxmSfSt77KO7S9YEsiQ-->，但结构 <strong data-page-node-id="kMzU3o2TPXfZxfOOc58sXE"><!--pnid:ugnGAXWs5hJVnJh4k2IMv2-->5.5</strong><!--pnid:VJy7V2iIM5GbGyNOMsYxri-->、量化 <strong data-page-node-id="6XzcpKVe6Vsza2y0xzgkY9"><!--pnid:LP7BtMwBs1Wnbno2jKhlNq-->4</strong><!--pnid:VlC5SXIru6MToxUorNUjqs-->、个人决策与推动力 <strong data-page-node-id="fDgWDEpFyEXvD0tMGPD6ks"><!--pnid:oNYVMnwEgcEHBhjc72wswa-->6</strong><!--pnid:IGuYnHBNlqXoAhkUSdwCPX-->。综合 <strong data-page-node-id="kS6hI2OAMIsHuWcX2lT24Y"><!--pnid:V1J1Ptn813070yeMJ5dGNl-->6.5</strong><!--pnid:qIkZ6uNKNlLWAz6cpB0ycc-->。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--pnid:wYhkIiAt2SVFpsX9wWlIKx--><!-- ============ 总结 ============ -->
+<h2 data-page-node-id="9lMmgRN0RpLVht56WLQ55n" class="sec"><!--pnid:M5DDmvCvdUaGipvBfH2JoW-->复盘要点：三条最该改的习惯<small data-page-node-id="E8pPaq8e4TtJvxxDLszQhy"><!--pnid:y6xHw0zrWy2trRqeEosX9P-->KEY TAKEAWAYS</small></h2>
+
+<table data-page-node-id="kgXnRyc3SMfG4NiDa3zj6K">
+  <thead data-page-node-id="Dewyuan6OVNBM3TIsdRfGq"><tr data-page-node-id="lRootXKYUoAryzYOkopgvI"><th data-page-node-id="IoNzuqFOOvkp6YRlKxV7sq" style="width:150px"><!--pnid:TL02wK72cXFWNVio8I752Y-->问题</th><th data-page-node-id="dGxMA6tecSzhEGBreSQ0IE"><!--pnid:RrIBT0EGu96AiRpNbWvBAU-->具体表现</th><th data-page-node-id="n0YXBVaLrAPTD7glxgaBZr"><!--pnid:ERW65OdPwbPuWp0yEwQfrQ-->改法</th></tr></thead>
+  <tbody data-page-node-id="80p4nFYfRSXqurYql79Yrx">
+    <tr data-page-node-id="le3L7ugflk2AEPnlqJSPVI">
+      <td data-page-node-id="rcvVO1D63Dnl7xGcMASRXW"><strong data-page-node-id="htUvzIekysNKpMyVBnADnc"><!--pnid:xKW7lKXLpLTe6qLOxzcqY3-->先给结论，后补框架</strong></td>
+      <td data-page-node-id="j24vZmJZ0vFVvmM9AEcHCO"><!--pnid:rqZ4bhQwSWj9O6OOHGr0sM-->Q2、Q4 都是直接进结论，没先立维度；面试官要的是推导过程</td>
+      <td data-page-node-id="cXM7FyzJXgBxw6OENYhgsn"><!--pnid:DcGudVVuvHndvXD1NFub6Z-->答题第一句固定为「我按 A/B/C 三个维度判断」，再逐条展开</td>
+    </tr>
+    <tr data-page-node-id="5DQCsSBPjRnS22dXhmA2YC">
+      <td data-page-node-id="35ghgzbx0MkKbYM0SFpTz6"><strong data-page-node-id="eVohtSIx8tdpYbAaUeudDp"><!--pnid:9lc4mQ1x5sYxWmICrXjAZm-->优化前不度量</strong></td>
+      <td data-page-node-id="QaCdgmFheQbcC9euSIQqBp"><!--pnid:6IdC2FDgJxf92dQnBUrmMm-->Q3 直接从「轮次多」跳到「微调」；Q6 全程无数字</td>
+      <td data-page-node-id="j7IY5EkEaPzbsOHsw3K28R"><!--pnid:wWxWaw2UoppI1pIgnZtOTA-->养成「先拆数据 → 定位瓶颈 → 再给方案」；每个项目准备 3 个关键数字</td>
+    </tr>
+    <tr data-page-node-id="jasFKwtQQ71ziuJx9Y2EZX">
+      <td data-page-node-id="lfm7FiDOWEuGmrcKUSUKfG"><strong data-page-node-id="Zscsi7GDbYLcjaqWZeYJad"><!--pnid:KNPkttppCrMzO2S0Z21T4l-->讲机制不停在名词</strong></td>
+      <td data-page-node-id="k2haYibuw8oNZovInAkICf"><!--pnid:VOZh1Nef2DLRpkKvGlthCN-->「统一包了重试」「做了回归测试」——名词到位，机制缺位</td>
+      <td data-page-node-id="VPEIrjw6CVRhUCOQGcHXXe"><!--pnid:xpbn1uuFli4lSlaHnvx6JU-->每个机制补三件事：触发条件、参数、失败时会怎样</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 data-page-node-id="40f7MJPeh2kANtTxB2OZEC" class="sec"><!--pnid:9bcTD2TUlcdKPoEeT0j5u9-->学习清单（按优先级）<small data-page-node-id="ENRqVZCOUsNESk2GBBi4Qi"><!--pnid:EWmtcDjtFW9S7HsAVT2iGn-->LEARNING PLAN</small></h2>
+
+<table data-page-node-id="rDkg3zFKdxHKKJnzQ5cgnS">
+  <thead data-page-node-id="bdQaVFLhzKuTyjdAk6EoTN"><tr data-page-node-id="9TjZuLa4nlDXWO2b5yAfo0"><th data-page-node-id="DDymHt1RZWBZwj8KrjF2ni" style="width:60px"><!--pnid:NYLoVCPmjrW3HUoPurAEvt-->优先级</th><th data-page-node-id="8e6T6QWs0YAu03ywaaMVZ0" style="width:190px"><!--pnid:qBnb1sAPvfF4xuWw3ODjZg-->主题</th><th data-page-node-id="kzJ8hcFPn3on9OeLavHkNC"><!--pnid:bl3L4LxzZyvTmWRYqmkLRh-->具体抓手</th></tr></thead>
+  <tbody data-page-node-id="djB8cCucSxKgH2Jk7tf7ov">
+    <tr data-page-node-id="eURcwtCuRm92RRJ6Vs3N5e"><td data-page-node-id="zUTvWCG9q6og6iL2LDwMXb" class="num s-low"><!--pnid:F24X9TqGuvRkDo55imLVdC-->P0</td><td data-page-node-id="EziKKHAoRpuna2FRvQoWOW"><!--pnid:61trl4bZwFQ9Vg6oSelpPD-->RAG / LLM 评估方法论</td><td data-page-node-id="SzSeQawRKyFfrEIq1iGSi3"><!--pnid:kl97xOe6agZwqXz0Rpjlm5-->RAGAS 四指标定义；评估集构建与负样本设计；LLM-as-Judge 的偏差与校准（kappa）；A/B 与 interleaving；统计显著性</td></tr>
+    <tr data-page-node-id="aolr0x17oWKq4j6rsnqOfK"><td data-page-node-id="0c6UBKNABop3EGTKi0PFEB" class="num s-low"><!--pnid:LG2fKe3OjdWpy8GFkm6JzL-->P0</td><td data-page-node-id="YypKZyYG4LYfP30Nrz4rob"><!--pnid:yGu4XejXQ2sfO11mQHEAN6-->Agent 可靠性工程</td><td data-page-node-id="rwKsZjtyqcDIfla7gk9sNt"><!--pnid:BaTBk2vuBq0Xix12kwF3fU-->幂等键、熔断与超时预算、状态机替代自由循环、human-in-the-loop 设计、prompt injection 防护</td></tr>
+    <tr data-page-node-id="zXcDmrtSWlJNBUG872pu6J"><td data-page-node-id="3CZejqtJtA7Ly5Nvi0ZHD6" class="num s-mid"><!--pnid:RAJfB8LLONz5GBlAQY5HTL-->P1</td><td data-page-node-id="JZZoaNUm5wQkUwDXIsyTHa"><!--pnid:TnjkbNKObrKfgcfEnD2Gq6-->系统设计表达</td><td data-page-node-id="jAcEhfFQywg6MNNTKq13BN"><!--pnid:AWcJJ1W21YIMAXV0JCNW5W-->网关分层模块、别名路由、SSE 流式处理、成本分摊口径、容量与单点分析</td></tr>
+    <tr data-page-node-id="DKIZH40e3KdHoHGh6rWLNh"><td data-page-node-id="GVn2lgcCC6FeXDigY4O97W" class="num s-mid"><!--pnid:5CmqiAbjn9vaIlmJgIAtkW-->P1</td><td data-page-node-id="EAr9SpBUnrwoJMjuO6J5lv"><!--pnid:IBODHf3pERZBfJ3D1P6czF-->结构化输出</td><td data-page-node-id="7NjW0eOrRvWqQCtCLCs7KS"><!--pnid:dZ81ENsa6c7R6FGkRbglr6-->JSON Schema、constrained decoding、function calling 稳定性、校验与重试策略</td></tr>
+    <tr data-page-node-id="6tNI7vCaMh86XEDgqXPHDt"><td data-page-node-id="KBE3RoO35LcHwEngdzXR5v" class="num s-mid"><!--pnid:cnNTlZbuosZLPYmdOPPJ4z-->P2</td><td data-page-node-id="ps1lOIiHvRTUjGaHWdEacC"><!--pnid:AIOWKxevHUYOXmzagS1hpA-->行为面试</td><td data-page-node-id="8p2HYdiGtcBW5BI9CPswUy"><!--pnid:8rI3GnfobB7NPA2AecqQnN-->STAR 量化模板；决策与推动力叙事；失败复盘的「如果重来」结构</td></tr>
+  </tbody>
+</table>
+
+<h2 data-page-node-id="rf8cdpKt7ldvIcyUCe7kKN" class="sec"><!--pnid:YaFAIFitf6JKSB3YJU2gQq-->附：下次面试该反问什么<small data-page-node-id="MI5FZdxmeA8a0T59EfX2Yq"><!--pnid:4kmCVy9ivrc9M6oWFJkhhl-->QUESTIONS TO ASK</small></h2>
+
+<table data-page-node-id="Icdtw53uascu4C41G7kwCK">
+  <thead data-page-node-id="OWPmXXFXQYG36gHQUISo6T"><tr data-page-node-id="VefWE0QBPZaZYkdCSz7mfi"><th data-page-node-id="YfnVFp0k9l5XWJvvv77Ap6" style="width:200px"><!--pnid:k5brTAHe9h7qFCU1vgMpw0-->该问的</th><th data-page-node-id="cTwn3pcBvsgqg7eQapmTy5"><!--pnid:0YhbM65fZIRpOfc6NSLn3N-->为什么</th><th data-page-node-id="IQqLWmJkFnX3OQqPZREWgJ"><!--pnid:ckJHh1jGYfPB2yrzBNhuV2-->示范问法</th></tr></thead>
+  <tbody data-page-node-id="x4kXEEy8jHeeTXZgEgSPTM">
+    <tr data-page-node-id="Wss276dmgYDdZucfmwBVuK">
+      <td data-page-node-id="KWYRvz6fDR6xDdl4DljKJq"><!--pnid:Vc44XJ0MKA1g2Wl85RHZfI-->半年内「做成什么样算成功」</td>
+      <td data-page-node-id="RuSe43urKiARQV989dPRWw"><!--pnid:KLDyzEaLLbVeLTDElkcVqB-->决定入职后的评价标准，反推岗位是否有真实授权</td>
+      <td data-page-node-id="Yyzl4pIOyIwdJBhh3JA7YT"><!--pnid:OciUCWFUK7sLbLtIAzdnKf-->「如果我入职 6 个月，您认为做到哪三件事算合格？哪件是您最在意的？」</td>
+    </tr>
+    <tr data-page-node-id="08pFCeG6lgrBcK7HZM47VQ">
+      <td data-page-node-id="uc68fjdDrFpHMEAu2ObEPz"><!--pnid:inT2fPGvmf5eQju0kbtnwd-->当前最大的技术卡点</td>
+      <td data-page-node-id="NVMql7amsY4N4QmB1y4RuI"><!--pnid:GYItfaJiacx6NO2qHgYEAm-->判断你是去救火还是去建设，也判断 leader 是否懂技术</td>
+      <td data-page-node-id="6kxWXuz7EJ73HviVfcd6Gb"><!--pnid:w4JOoa07TkedVDHaJwfPyW-->「现在最让团队头疼的一个技术问题是什么？你们试过哪些方案？」</td>
+    </tr>
+    <tr data-page-node-id="1PfB3FoIXdA6rlBkI4ywKn">
+      <td data-page-node-id="zSKMgmj3Dy2ZkYEhVwSgZA"><!--pnid:FCibAqAqZs9TOj6sRY733n-->决策权与资源边界</td>
+      <td data-page-node-id="3BMmb3kmQBO03a0o6Q0Ytj"><!--pnid:2nzga6bZCcTIp7uL01njyX-->高级岗位最易踩的坑：有责无权</td>
+      <td data-page-node-id="2Z31550EVcgoWYMidCEJ2t"><!--pnid:6vEKf8bLklbz0zvIrSTaGF-->「评估体系这类跨团队的事，我有多大权限推动？需要谁配合？」</td>
+    </tr>
+  </tbody>
+</table>
+
+<footer data-page-node-id="nLCNXNIziMNH7HeTJTfSuA"><!--pnid:D22f4AVUgY7zVgDtn4UqLj-->
+  AI 应用工程师（高级）模拟面试 · 复盘手册<br data-page-node-id="8TvE1N9ofo30jbEwJ2e11N"><!--pnid:2FIdimwdV2Of7xJU2ldzny-->
+  共 6 题 · 综合 6.5 / 10 · 裁决 Lean Hire<br data-page-node-id="uAJE4IR8z2gRRiJtlsPYMj">
+  <span data-page-node-id="2kMovF6FuI3z0quVIQaCCe" style="font-size:11.5px"><!--pnid:AWUbnW8qS7gMITswOZ29m7-->本文件可直接用浏览器打开阅读，或按 Ctrl/Cmd + P 导出为 PDF</span>
+</footer>
+
+</div>
+</body>
+</html>
